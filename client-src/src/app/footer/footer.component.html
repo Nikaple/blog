@@ -1,7 +1,9 @@
 <footer fxLayout="column"
   fxLayoutAlign="space-around none">
   <div class="social-container"
-    fxLayout="row"
+    fxLayout.gt-xs="row"
+    fxLayout.xs="column"
+    fxLayoutGap.xs="12px"
     fxLayoutAlign="space-around space-around">
     <button md-raised-button
       fxLayout="column"
@@ -9,12 +11,10 @@
       color="accent"
       *ngFor="let social of socialNetworks"
       (click)="linkToSocialNetwork(social)">
-        <!--<i class="fa fa-qq"></i>-->
-        <md-icon fontSet="fa" [fontIcon]="social.icon"></md-icon>
-        {{social.name}}
-        <!--<md-icon fontSet="fa"
+        <md-icon fontSet="fa"
         [fontIcon]="social.icon"
-        aria-hidden="true">{{social.name}}</md-icon>-->
+        aria-hidden="true"></md-icon>
+        {{social.name}}
     </button>
   </div>
   <div fxLayout="row" fxLayoutAlign="center center">© Nikaple 2012-2016</div>

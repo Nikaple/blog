@@ -7,7 +7,7 @@ footer {
 }
 
 button {
-  min-width: 130px;
+  min-width: 120px;
 }
 
 md-icon::before {
@@ -17,4 +17,14 @@ md-icon::before {
 
 a {
   color: white;
+}
+
+@media screen and (max-width: 600px) {
+  footer {
+    height: 250px;
+  }
+  button {
+    margin-left: 5rem;
+    margin-right: 5rem;
+  }
 }
