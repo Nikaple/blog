@@ -1,0 +1,11 @@
+<div class="project-container"
+  fxLayout="row"
+  fxLayoutAlign="space-around center"
+  fxLayoutGap="20px"
+  fxLayoutWrap>
+  <app-home-project
+    *ngFor="let project of projects"
+    [project]="project"
+    class="project-child">
+  </app-home-project>
+</div>

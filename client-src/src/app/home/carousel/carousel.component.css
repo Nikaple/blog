@@ -1,0 +1,15 @@
+.carousel-container {
+  /*flex properties*/
+  display: flex;
+  justify-content: center;
+  align-content: center;
+
+  width: 100%;
+  height: 300px;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.carousel {
+  display: flex;
+  align-self: center;
+}
