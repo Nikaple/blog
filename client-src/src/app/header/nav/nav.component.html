@@ -4,7 +4,7 @@
      [routerLink]="link.path"
      (click)="onSelect(link)"
      routerLinkActive #rla="routerLinkActive"
-     [active]="isActive(link)">
-     {{link.name}}
+     [active]="rla.isActive">
+     {{link.name | uppercase}}
   </a>
 </nav>

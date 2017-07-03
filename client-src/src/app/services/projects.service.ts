@@ -8,7 +8,7 @@ export class ProjectsService {
 
   constructor(private http: Http) { }
 
-  getAllProjects() {
+  getAllProjects(): Promise<ProjectInfo[]> {
     return this.http
     .get('api/projects')
     .toPromise()

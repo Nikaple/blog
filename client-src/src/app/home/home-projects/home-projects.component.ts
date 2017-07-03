@@ -9,23 +9,21 @@ import { ProjectInfo } from "../../models/projectInfo";
 })
 
 export class HomeProjectsComponent implements OnInit {
-  projects: void | ProjectInfo[];
+  projects: any;
 
   constructor(private projectsService: ProjectsService) { }
 
   ngOnInit() {
-    this.projectsService
-      .getAllProjects()
-      .then(response => {
-        if (!response) {
-          throw Error('Fetch error: no response.')
-        }
-        this.projects = response.map(project => {
-          return Object.assign(project, {date: new Date(project.date).toLocaleDateString()});
-        });
-        console.log(this.projects);
-      })
-      .catch(err => console.log(err));
+    if (!sessionStorage.getItem('home-projects')) {
+      this.projectsService
+        .getAllProjects()
+        .then(response => {
+          this.projects = response;
+          sessionStorage.setItem('home-projects', JSON.stringify(response));
+        })
+        .catch(err => console.log(err));
+    } else {
+      this.projects = JSON.parse(sessionStorage.getItem('home-projects'));
+    }
   }
-
 }

@@ -46,8 +46,4 @@ export class NavComponent implements OnInit {
   onSelect(link: NavLink) {
     this.currentLink = link.name;
   }
-
-  isActive(link: NavLink) {
-    return link.name === this.currentLink;
-  }
 }

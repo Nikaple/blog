@@ -7,12 +7,12 @@ import { MdCardModule } from '@angular/material';
   templateUrl: './home-project.component.html',
   styleUrls: ['./home-project.component.css']
 })
+
 export class HomeProjectComponent implements OnInit {
   @Input() project: ProjectInfo;
   constructor() { }
 
   ngOnInit() {
-    // this.project = {};
   }
 
 }
