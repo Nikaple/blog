@@ -8,16 +8,16 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 
 // mock service
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryDataService }  from './services/in-memory-data.service';
+import { InMemoryDataService } from './services/in-memory-data.service';
 
 // external imports
 import { UuidService } from './utils/uuid/uuid.service'
 
 // material imports
-import { MdTabsModule } from "@angular/material";
-import { MdIconModule } from "@angular/material";
-import { MdButtonModule } from "@angular/material";
-import { MdCardModule } from "@angular/material";
+import { MdTabsModule } from '@angular/material';
+import { MdIconModule } from '@angular/material';
+import { MdButtonModule } from '@angular/material';
+import { MdCardModule } from '@angular/material';
 
 // component imports
 import { AppComponent } from './app.component';
@@ -88,7 +88,8 @@ import { HomeProjectComponent } from './home/home-projects/home-project/home-pro
     ])
   ],
   providers: [
-    ProjectsService
+    ProjectsService,
+    UuidService
   ],
   bootstrap: [AppComponent]
 })

@@ -9,9 +9,3 @@ h1 {
   line-height: 48px;
   margin-left: 32px;
 }
-
-@media screen and (max-width: 959px) {
-  h1 {
-    display: none;
-  }
-}

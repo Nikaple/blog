@@ -1,6 +1,7 @@
 <header fxLayout="row"
   fxLayoutAlign.gt-sm="space-between center"
   fxLayoutAlign.lt-md="center center">
-  <h1 (click)="navToGithub()">{{ title }}</h1>
+  <h1 (click)="navToGithub()"
+    [ngStyle.lt-md]="{'display': 'none'}">{{ title }}</h1>
   <app-nav></app-nav>
 </header>
