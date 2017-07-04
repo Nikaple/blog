@@ -1,15 +1,22 @@
 import { NgModule }       from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FlexLayoutModule } from '@angular/flex-layout';
+
+import { MarkdownModule } from 'angular2-markdown';
+
+import { MdCardModule } from '@angular/material';
+
 import { BlogComponent }    from './blog.component';
 import { BlogPostComponent }  from './blog-post/blog-post.component';
 import { BlogRoutingModule } from './blog-routing.module';
 import { BlogPostsService } from "../services/blog-posts.service";
-import { MarkdownModule } from 'angular2-markdown';
 
 @NgModule({
   imports: [
     BlogRoutingModule,
     CommonModule,
+    FlexLayoutModule,
+    MdCardModule,
     // external
     MarkdownModule.forRoot()
   ],

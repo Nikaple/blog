@@ -6,6 +6,11 @@ import { BlogPost } from '../models/blogPost';
 import { blog1 } from './mock-data/mock-blog1';
 import { blog2 } from './mock-data/mock-blog2';
 import { blog3 } from './mock-data/mock-blog3';
+import { blog4 } from './mock-data/mock-blog4';
+import { blog5 } from './mock-data/mock-blog5';
+import { blog6 } from './mock-data/mock-blog6';
+import { blog7 } from './mock-data/mock-blog7';
+import { blog8 } from './mock-data/mock-blog8';
 
 @Injectable()
 export class InMemoryDataService implements InMemoryDbService {
@@ -37,24 +42,51 @@ export class InMemoryDataService implements InMemoryDbService {
     return [
       {
         id: this.uuidService.generate(),
-        route: 'linux-environment',
         title: 'Linux环境搭建 —— Vagrant与VirtualBox的配置',
         date: new Date(2017, 4, 5).getTime(),
         content: blog1
       },
       {
         id: this.uuidService.generate(),
-        route: 'linux-user-management',
         title: 'Linux下的用户管理 —— 查看、添加用户',
         date: new Date(2017, 2, 16).getTime(),
         content: blog2
       },
       {
         id: this.uuidService.generate(),
-        route: 'markdown-syntax-test',
         title: 'markdown语法测试',
         date: new Date(2017, 1, 16).getTime(),
         content: blog3
+      },
+      {
+        id: this.uuidService.generate(),
+        title: '设计模式的超简化描述！',
+        date: new Date(2017, 1, 16).getTime(),
+        content: blog4
+      },
+      {
+        id: this.uuidService.generate(),
+        title: 'HTML 部分问题与解答',
+        date: new Date(2017, 1, 16).getTime(),
+        content: blog5
+      },
+      {
+        id: this.uuidService.generate(),
+        title: 'FEX 面试问题',
+        date: new Date(2017, 1, 16).getTime(),
+        content: blog6
+      },
+      {
+        id: this.uuidService.generate(),
+        title: '前端工作面试常见问题',
+        date: new Date(2017, 1, 16).getTime(),
+        content: blog7
+      },
+      {
+        id: this.uuidService.generate(),
+        title: '前端工作面试HTML相关问题',
+        date: new Date(2017, 1, 16).getTime(),
+        content: blog8
       }
     ];
   }

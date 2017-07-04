@@ -8,4 +8,6 @@ import { MdButtonModule } from '@angular/material';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent { }
+export class AppComponent {
+  height = innerHeight;
+}

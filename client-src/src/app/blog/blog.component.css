@@ -1,0 +1,21 @@
+p {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #eee;
+}
+
+div {
+  width: 60%;
+  margin: 2rem auto;
+}
+
+ul {
+  display: inline-block;
+  font-size: 1.5rem;
+}
+
+md-card {
+  cursor: pointer;
+}

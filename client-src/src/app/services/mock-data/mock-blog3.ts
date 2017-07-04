@@ -102,6 +102,17 @@ s = "Python syntax highlighting"
 print s
 \`\`\`
 
+\`\`\`html
+<body>
+  <p class="wow" id="click"></p>
+</body>
+\`\`\`
+
+\`\`\`css
+div {
+  border: 1px solid red;
+}
+\`\`\`
 \`\`\`
 No language indicated, so no syntax highlighting.
 But let's throw in a <b>tag</b>.

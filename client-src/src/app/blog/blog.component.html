@@ -1,6 +1,11 @@
-<ul>
-  <li *ngFor="let post of blogPosts"
-    (click)="onSelect(post)">
-    {{post.title}}
-  </li>
-</ul>
+<div>
+  <p>{{title}}</p>
+  <ul fxLayout="column"
+    fxLayoutGap="2rem">
+    <md-card *ngFor="let post of blogPosts"
+      (click)="onSelect(post)">
+      <md-card-title>{{post.title}}</md-card-title>
+      <md-card-subtitle>{{post.date | date}}</md-card-subtitle>
+    </md-card>
+  </ul>
+</div>

@@ -3,7 +3,6 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 import { BlogPostsService } from "../../services/blog-posts.service";
 import { BlogPost } from "../../models/blogPost";
 import 'rxjs/add/operator/switchMap';
-import 'rxjs/Observable';
 
 @Component({
   selector: 'app-blog-post',

@@ -56,9 +56,4 @@ export const blog1 = `
 	$ man apt-get
 \`\`\`
 
-接下来使用\`apt-get\`来安装我们所需的程序\`finger\`：
-
-\`\`\` bash
-	$ sudo apt-get install finger
-\`\`\`
 `;

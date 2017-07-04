@@ -1,6 +1,6 @@
 div {
   width: 60%;
-  margin: 0 auto;
+  margin: 30px auto;
 }
 
 
@@ -9,14 +9,6 @@ markdown {
     display: inline-block;
     color: rgb(51, 51, 51);
     line-height: 1.6;
-}
-
-:host >>> *:first-child {
-    margin-top: 0 !important;
-}
-
-:host >>> *:last-child {
-    margin-bottom: 0 !important;
 }
 
 :host >>> a {

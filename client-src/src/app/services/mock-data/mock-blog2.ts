@@ -1,7 +1,11 @@
 export const blog2 = `
 ## Linux下的用户管理 —— 查看、添加用户
 
-finger是Linux系统中用于查看用户信息的程序。
+finger是Linux系统中用于查看用户信息的程序。使用\`apt-get\`来安装：
+
+\`\`\` bash
+	$ sudo apt-get install finger
+\`\`\`
 
 ### 查看当前用户信息
 

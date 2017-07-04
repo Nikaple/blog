@@ -12,6 +12,7 @@ import { Subscriber } from "rxjs/Subscriber";
   styleUrls: ['./blog.component.css']
 })
 export class BlogComponent implements OnInit {
+  title = 'Posts';
   blogPosts: BlogPost[];
   constructor(private router: Router, private blogPostsService: BlogPostsService) { }
 
