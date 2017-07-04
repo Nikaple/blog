@@ -1,3 +1,6 @@
-<p>
-  blog works!
-</p>
+<ul>
+  <li *ngFor="let post of blogPosts"
+    (click)="onSelect(post)">
+    {{post.title}}
+  </li>
+</ul>

@@ -5,13 +5,14 @@ import { RouterModule } from '@angular/router'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpModule } from '@angular/http';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { AppRoutingModule } from './app-routing.module';
 
 // mock service
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './services/in-memory-data.service';
 
 // external imports
-import { UuidService } from './utils/uuid/uuid.service'
+import { UuidService } from './utils/uuid/uuid.service';
 
 // material imports
 import { MdTabsModule } from '@angular/material';
@@ -33,21 +34,32 @@ import { HomeProjectsComponent } from './home/home-projects/home-projects.compon
 import { FooterComponent } from './footer/footer.component';
 import { ProjectsService } from './services/projects.service';
 import { HomeProjectComponent } from './home/home-projects/home-project/home-project.component';
+import { BlogPostComponent } from './blog/blog-post/blog-post.component';
+import { BlogPostsService } from "./services/blog-posts.service";
+import { NotFoundComponent } from './not-found/not-found.component';
+import { BlogModule } from "./blog/blog.module";
 
 @NgModule({
   declarations: [
     AppComponent,
-    BlogComponent,
-    ProfileComponent,
-    ProjectComponent,
-    AboutComponent,
-    HomeComponent,
+    // header
     HeaderComponent,
     NavComponent,
+    // home
+    HomeComponent,
     CarouselComponent,
     HomeProjectsComponent,
+    HomeProjectComponent,
+    // profile
+    ProfileComponent,
+    // project
+    ProjectComponent,
+    // about
+    AboutComponent,
+    // footer
     FooterComponent,
-    HomeProjectComponent
+    // not found
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
@@ -55,37 +67,14 @@ import { HomeProjectComponent } from './home/home-projects/home-project/home-pro
     HttpModule,
     InMemoryWebApiModule.forRoot(InMemoryDataService),
     BrowserAnimationsModule,
+    // material
     MdTabsModule,
     MdIconModule,
     MdButtonModule,
     MdCardModule,
-    RouterModule.forRoot([
-      {
-        path: '',
-        redirectTo: 'home',
-        pathMatch: 'full'
-      },
-      {
-        path: 'home',
-        component: HomeComponent
-      },
-      {
-        path: 'blog',
-        component: BlogComponent
-      },
-      {
-        path: 'profile',
-        component: ProfileComponent
-      },
-      {
-        path: 'project',
-        component: ProjectComponent
-      },
-      {
-        path: 'about',
-        component: AboutComponent
-      }
-    ])
+    // routing
+    BlogModule,
+    AppRoutingModule,
   ],
   providers: [
     ProjectsService,
