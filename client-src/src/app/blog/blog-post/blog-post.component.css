@@ -1,226 +1,28 @@
-div {
+div.container {
   width: 60%;
-  margin: 30px auto;
+  margin: 2rem auto;
 }
 
-
-markdown {
-    font-family: "Open Sans", "Helvetica Neue", Helvetica,"Microsoft Yahei", "微软雅黑", Arial, sans-serif;
-    display: inline-block;
-    color: rgb(51, 51, 51);
-    line-height: 1.6;
+div.buttons {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
 }
 
-:host >>> a {
-    color: #4183C4;
-    text-decoration: none;
+@media screen and (max-width: 599px) {
+  div.container {
+    width: 90%;
+  }
 }
 
-:host >>> h1,
-:host >>> h2,
-:host >>> h3,
-:host >>> h4,
-:host >>> h5,
-:host >>> h6 {
-    position: relative;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    font-weight: bold;
-    line-height: 1.4;
-    cursor: text;
+@media screen and (min-width: 600px) and (max-width: 959px) {
+  div.container {
+    width: 80%;
+  }
 }
 
-
-:host >>> h1 tt,
-:host >>> h2 tt,
-:host >>> h3 tt,
-:host >>> h4 tt,
-:host >>> h5 tt,
-:host >>> h6 tt,
-:host >>> h1 code,
-:host >>> h2 code,
-:host >>> h3 code,
-:host >>> h4 code,
-:host >>> h5 code,
-:host >>> h6 code,
-:host >>> td code,
-:host >>> p tt,
-:host >>> p code {
-    font-size: inherit;
-    border: 1px solid #ddd;
-    background-color: #f8f8f8;
-    border-radius: 3px;
-    padding: 0;
-    font-family: Consolas, "Liberation Mono", Courier, monospace;
-    padding: 2px 4px 0px 4px;
-    font-size: 0.9em;
+@media screen and (min-width: 960px) and (max-width: 1279px) {
+  div.container {
+    width: 70%;
+  }
 }
-
-:host >>> h1 {
-    padding-bottom: .3em;
-    font-size: 2.25em;
-    line-height: 1.2;
-    border-bottom: 1px solid #eee;
-}
-
-:host >>> h2 {
-    padding-bottom: .3em;
-    font-size: 1.75em;
-    line-height: 1.225;
-    border-bottom: 1px solid #eee;
-}
-
-:host >>> h3 {
-    font-size: 1.5em;
-    line-height: 1.43;
-}
-
-:host >>> h4 {
-    font-size: 1.25em;
-}
-
-:host >>> h5 {
-    font-size: 1em;
-}
-
-:host >>> h6 {
-    font-size: 1em;
-    color: #777;
-}
-
-:host >>> p,
-:host >>> blockquote,
-:host >>> ul,
-:host >>> ol,
-:host >>> dl,
-:host >>> table {
-    margin: 0.8em 0;
-}
-
-:host >>> li>ol,
-:host >>> li>ul {
-    margin: 0 0;
-}
-
-:host >>> hr {
-    height: 4px;
-    padding: 0;
-    margin: 16px 0;
-    background-color: #e7e7e7;
-    border: 0 none;
-    overflow: hidden;
-    box-sizing: content-box;
-    border-bottom: 1px solid #ddd;
-}
-
-:host >>> markdown>h2:first-child {
-    margin-top: 0;
-    padding-top: 0;
-}
-
-:host >>> markdown>h1:first-child {
-    margin-top: 0;
-    padding-top: 0;
-}
-
-:host >>> markdown>h1:first-child+h2 {
-    margin-top: 0;
-    padding-top: 0;
-}
-
-:host >>> h3:first-child,
-:host >>> h4:first-child,
-:host >>> h5:first-child,
-:host >>> h6:first-child {
-    margin-top: 0;
-    padding-top: 0;
-}
-
-:host >>> a:first-child h1,
-:host >>> a:first-child h2,
-:host >>> a:first-child h3,
-:host >>> a:first-child h4,
-:host >>> a:first-child h5,
-:host >>> a:first-child h6 {
-    margin-top: 0;
-    padding-top: 0;
-}
-
-:host >>> h1 p,
-:host >>> h2 p,
-:host >>> h3 p,
-:host >>> h4 p,
-:host >>> h5 p,
-:host >>> h6 p {
-    margin-top: 0;
-}
-
-:host >>> li p.first {
-    display: inline-block;
-}
-
-:host >>> ul,
-:host >>> ol {
-    padding-left: 30px;
-}
-
-:host >>> ul:first-child,
-:host >>> ol:first-child {
-    margin-top: 0;
-}
-
-:host >>> ul:last-child,
-:host >>> ol:last-child {
-    margin-bottom: 0;
-}
-
-:host >>> blockquote {
-    border-left: 4px solid #dddddd;
-    padding: 0 15px;
-    color: #777777;
-}
-
-:host >>> blockquote blockquote {
-    padding-right: 0;
-}
-
-:host >>> table {
-    padding: 0;
-    word-break: initial;
-}
-
-:host >>> table tr {
-    border-top: 1px solid #cccccc;
-    background-color: white;
-    margin: 0;
-    padding: 0;
-}
-
-:host >>> table tr:nth-child(2n) {
-    background-color: #f8f8f8;
-}
-
-:host >>> table tr th {
-    font-weight: bold;
-    border: 1px solid #cccccc;
-    text-align: left;
-    margin: 0;
-    padding: 6px 13px;
-}
-
-:host >>> table tr td {
-    border: 1px solid #cccccc;
-    text-align: left;
-    margin: 0;
-    padding: 6px 13px;
-}
-
-:host >>> table tr th:first-child,
-:host >>> table tr td:first-child {
-    margin-top: 0;
-}
-
-:host >>> table tr th:last-child,
-:host >>> table tr td:last-child {
-    margin-bottom: 0;
-}
+@import "./markdown.css";

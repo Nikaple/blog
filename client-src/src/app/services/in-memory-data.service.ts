@@ -1,8 +1,8 @@
-import { Injectable } from "@angular/core";
+import { Injectable } from '@angular/core';
 import { InMemoryDbService } from 'angular-in-memory-web-api';
 import { UuidService } from '../utils/uuid/uuid.service';
-import { ProjectInfo } from '../models/projectInfo';
-import { BlogPost } from '../models/blogPost';
+import { ProjectInfo } from '../models/project-info.type';
+import { BlogPost } from '../models/blog-post.type';
 import { blog1 } from './mock-data/mock-blog1';
 import { blog2 } from './mock-data/mock-blog2';
 import { blog3 } from './mock-data/mock-blog3';
@@ -27,7 +27,7 @@ export class InMemoryDataService implements InMemoryDbService {
       this.projects = JSON.parse(sessionStorage.getItem('home-projects'));
     }
     if (!sessionStorage.getItem('blog-posts')) {
-      this.blogposts= this.getMockBlogPosts();
+      this.blogposts = this.getMockBlogPosts();
       sessionStorage.setItem('blog-posts', JSON.stringify(this.blogposts));
     } else {
       this.blogposts = JSON.parse(sessionStorage.getItem('blog-posts'));

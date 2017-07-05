@@ -1,3 +1,5 @@
+/* tslint:disable:max-line-length */
+
 export const blog3 = `
 # Headers
 

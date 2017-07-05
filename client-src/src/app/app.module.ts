@@ -19,8 +19,10 @@ import { MdTabsModule } from '@angular/material';
 import { MdIconModule } from '@angular/material';
 import { MdButtonModule } from '@angular/material';
 import { MdCardModule } from '@angular/material';
+import { MdSidenavModule } from '@angular/material';
 
 // component imports
+import { BlogModule } from './blog/blog.module';
 import { AppComponent } from './app.component';
 import { BlogComponent } from './blog/blog.component';
 import { ProfileComponent } from './profile/profile.component';
@@ -32,12 +34,14 @@ import { NavComponent } from './header/nav/nav.component';
 import { CarouselComponent } from './home/carousel/carousel.component';
 import { HomeProjectsComponent } from './home/home-projects/home-projects.component';
 import { FooterComponent } from './footer/footer.component';
-import { ProjectsService } from './services/projects.service';
 import { HomeProjectComponent } from './home/home-projects/home-project/home-project.component';
 import { BlogPostComponent } from './blog/blog-post/blog-post.component';
-import { BlogPostsService } from "./services/blog-posts.service";
 import { NotFoundComponent } from './not-found/not-found.component';
-import { BlogModule } from "./blog/blog.module";
+
+import { BlogPostsService } from './services/blog-posts.service';
+import { ProjectsService } from './services/projects.service';
+import { RoutesService } from './services/routes.service';
+import { SidenavComponent } from './sidenav/sidenav.component';
 
 @NgModule({
   declarations: [
@@ -59,7 +63,8 @@ import { BlogModule } from "./blog/blog.module";
     // footer
     FooterComponent,
     // not found
-    NotFoundComponent
+    NotFoundComponent,
+    SidenavComponent
   ],
   imports: [
     BrowserModule,
@@ -72,12 +77,14 @@ import { BlogModule } from "./blog/blog.module";
     MdIconModule,
     MdButtonModule,
     MdCardModule,
+    MdSidenavModule,
     // routing
     BlogModule,
     AppRoutingModule,
   ],
   providers: [
     ProjectsService,
+    RoutesService,
     UuidService
   ],
   bootstrap: [AppComponent]

@@ -1,3 +1,5 @@
+/* tslint:disable:max-line-length */
+
 export const blog7 = `## [前端工作面试常见问题](https://github.com/darcyclarke/Front-end-Developer-Interview-Questions#general)
 
 **备注**: [Rebecca Murphey](http://rmurphey.com/) 的 [Baseline For Front-End Developers](http://rmurphey.com/blog/2012/04/12/a-baseline-for-front-end-developers/) 是你在准备面试前应该阅读的绝佳资源。
@@ -58,7 +60,7 @@ export const blog7 = `## [前端工作面试常见问题](https://github.com/dar
   - 优雅降级(graceful degradation)：一开始就构建完整的功能，然后再针对低版本浏览器进行兼容。
 
 
-　区别：优雅降级是从复杂的现状开始，并试图减少用户体验的供给，而渐进增强则是从一个非常基础的，能够起作用的版本开始，并不断扩充，以适应未来环境的需要。降级（功能衰减）意味着往回看；而渐进增强则意味着朝前看，同时保证其根基处于安全地带。　
+　区别：优雅降级是从复杂的现状开始，并试图减少用户体验的供给，而渐进增强则是从一个非常基础的，能够起作用的版本开始，并不断扩充，以适应未来环境的需要。降级（功能衰减）意味着往回看；而渐进增强则意味着朝前看，同时保证其根基处于安全地带。
   “优雅降级”观点
 
 　“优雅降级”观点认为应该针对那些最高级、最完善的浏览器来设计网站。而将那些被认为“过时”或有功能缺失的浏览器下的测试工作安排在开发周期的最后阶段，并把测试对象限定为主流浏览器（如 IE、Mozilla 等）的前一个版本。

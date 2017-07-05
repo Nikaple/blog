@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ProjectInfo } from '../../../models/projectInfo';
+import { ProjectInfo } from '../../../models/project-info.type';
 import { MdCardModule } from '@angular/material';
 
 @Component({

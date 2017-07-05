@@ -1,3 +1,5 @@
+/* tslint:disable:max-line-length */
+
 export const blog1 = `
 
 ## Linux环境搭建 —— Vagrant与VirtualBox的配置

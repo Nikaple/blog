@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { RoutesService } from '../../services/routes.service';
 
 interface NavLink {
   path: string;
@@ -8,42 +9,20 @@ interface NavLink {
 @Component({
   selector: 'app-nav',
   templateUrl: './nav.component.html',
-  styleUrls: ['./nav.component.css']
+  styleUrls: ['./nav.component.css'],
+  providers: [RoutesService]
 })
 
 export class NavComponent implements OnInit {
   navLinks: NavLink[];
   currentLink: string;
 
-  constructor() { }
+  constructor(private routesSerivce: RoutesService) { }
 
   ngOnInit() {
-    this.navLinks = [
-      {
-        path: '/home',
-        name: 'home'
-      },
-      {
-        path: '/blog',
-        name: 'blog'
-      },
-      {
-        path: '/profile',
-        name: 'profile'
-      },
-      {
-        path: '/project',
-        name: 'project'
-      },
-      {
-        path: '/about',
-        name: 'about'
-      }
-    ];
-    this.currentLink = 'home';
+    this.navLinks = this.routesSerivce.getRootRoutes();
   }
 
   onSelect(link: NavLink) {
-    this.currentLink = link.name;
   }
 }

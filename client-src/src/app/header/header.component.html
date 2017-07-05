@@ -1,7 +1,8 @@
 <header fxLayout="row"
   fxLayoutAlign.gt-sm="space-between center"
-  fxLayoutAlign.lt-md="center center">
+  fxLayoutAlign.sm="center center"
+  fxLayoutAlign.lt-sm="flex-start">
   <h1 (click)="navToGithub()"
-    [ngStyle.lt-md]="{'display': 'none'}">{{ title }}</h1>
-  <app-nav></app-nav>
+    fxHide.lt-md>{{ title }}</h1>
+  <app-nav fxHide.lt-sm></app-nav>
 </header>

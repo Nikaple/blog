@@ -1,3 +1,14 @@
-<div>
+<div class="container"
+  fxLayout="column">
   <markdown [data]="post ? post.content : ''"></markdown>
+  <div class="buttons"
+    fxLayout="row"
+    fxLayoutAlign="space-between">
+    <button md-raised-button (click)="onPrevPost()"
+      [disabled]="!prevBlogExists">Previous Blog</button>
+    <button md-raised-button (click)="onNextPost()"
+      [disabled]="!nextBlogExists">Next Blog</button>
+  </div>
 </div>
+
+

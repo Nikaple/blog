@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ProjectInfo } from '../models/projectInfo';
+import { ProjectInfo } from '../models/project-info.type';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 

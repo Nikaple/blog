@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SocialNetwork } from '../models/social-network';
+import { SocialNetwork } from '../models/social-network.type';
 
 @Component({
   selector: 'app-footer',

@@ -1,3 +1,5 @@
+/* tslint:disable:max-line-length */
+
 export const blog5 = `## [Front End Web Development Quiz](http://davidshariff.com/quiz/) HTML 部分问题与解答
 
 1. Q: \`<keygen>\` 是正确的HTML5标签吗？

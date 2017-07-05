@@ -1,0 +1,25 @@
+<md-sidenav-container #navContainer
+  (click)="toggleContainer()"
+  [@toggle]="state">
+  <header fxLayout="row"
+    fxLayoutAlign="space-between center">
+    <md-icon>menu</md-icon>
+    <h1>{{ title }}</h1>
+  </header>
+  <md-sidenav #sidenav mode="side">
+    <nav md-tab-nav-bar
+      fxLayout="column"
+      fxLayoutAlign="flex-start center">
+      <div class="avatar"></div>
+      <div fxLayout="column"
+      fxLayoutAlign="space-between"
+      fxLayoutGap="1rem">
+        <a md-tab-link
+          *ngFor="let link of navLinks"
+          [routerLink]="link.path">
+          {{link.name | uppercase}}
+        </a>
+      </div>
+    </nav>
+  </md-sidenav>
+</md-sidenav-container>

@@ -1,3 +1,5 @@
+/* tslint:disable:max-line-length */
+
 export const blog8 = `## [前端工作面试HTML相关问题](https://github.com/darcyclarke/Front-end-Developer-Interview-Questions#html)
 
 * Q: \`doctype\`（文档类型）的作用是什么？

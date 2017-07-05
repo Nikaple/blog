@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { BlogPostsService } from '../services/blog-posts.service';
-import { BlogPost } from '../models/blogPost';
-import { Observable } from "rxjs/Observable";
-import { Subscriber } from "rxjs/Subscriber";
+import { BlogPost } from '../models/blog-post.type';
+import { Observable } from 'rxjs/Observable';
+import { Subscriber } from 'rxjs/Subscriber';
 
 
 @Component({

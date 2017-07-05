@@ -1,3 +1,5 @@
+/* tslint:disable:max-line-length */
+
 export const blog2 = `
 ## Linux下的用户管理 —— 查看、添加用户
 
