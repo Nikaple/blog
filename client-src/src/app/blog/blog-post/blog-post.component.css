@@ -8,6 +8,18 @@ div.buttons {
   margin-bottom: 1rem;
 }
 
+div.spinner-container {
+  position: absolute;
+  top: 5rem;
+  left: 50%;
+  margin-left: -1.5rem;
+}
+
+md-progress-spinner {
+  width: 3rem;
+  height: 3rem;
+}
+
 @media screen and (max-width: 599px) {
   div.container {
     width: 90%;
@@ -25,4 +37,4 @@ div.buttons {
     width: 70%;
   }
 }
-@import "./markdown.css";
+@import "./markdown-theme.css";

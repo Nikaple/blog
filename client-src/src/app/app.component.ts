@@ -14,6 +14,7 @@ import 'rxjs/add/operator/throttleTime';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
+
   height: number;
 
   constructor() { }

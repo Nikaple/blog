@@ -6,6 +6,7 @@ import { MarkdownModule, MarkdownService } from 'angular2-markdown';
 
 import { MdCardModule } from '@angular/material';
 import { MdButtonModule } from '@angular/material';
+import { MdProgressSpinnerModule } from '@angular/material';
 
 import { BlogComponent } from './blog.component';
 import { BlogPostComponent } from './blog-post/blog-post.component';
@@ -20,6 +21,7 @@ import { BlogPostsService } from '../services/blog-posts.service';
     // material
     MdCardModule,
     MdButtonModule,
+    MdProgressSpinnerModule,
     // external
     MarkdownModule.forRoot()
   ],

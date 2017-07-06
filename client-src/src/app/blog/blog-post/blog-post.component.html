@@ -1,5 +1,8 @@
 <div class="container"
   fxLayout="column">
+  <div class="spinner-container">
+    <md-progress-spinner mode="indeterminate" [fxHide]="!!post"></md-progress-spinner>
+  </div>
   <markdown [data]="post ? post.content : ''"></markdown>
   <div class="buttons"
     fxLayout="row"
@@ -10,5 +13,3 @@
       [disabled]="!nextBlogExists">Next Blog</button>
   </div>
 </div>
-
-

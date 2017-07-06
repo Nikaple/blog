@@ -8,5 +8,7 @@ h1 {
   height: 48px;
   line-height: 48px;
   margin-left: 32px;
+  border: none;
+  padding-top: 0.3rem;
 }
 
