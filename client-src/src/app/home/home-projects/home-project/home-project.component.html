@@ -1,4 +1,4 @@
-<md-card>
+<md-card (click)="onClick($event)">
   <img md-card-image [src]="project.thumbnail" [alt]="project.description">
   <md-card-title>{{project.name}}</md-card-title>
   <md-card-subtitle>{{project.date | date}}</md-card-subtitle>

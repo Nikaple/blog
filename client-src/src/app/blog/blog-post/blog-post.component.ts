@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params, NavigationEnd } from '@angular/router';
 import { MdButtonModule } from '@angular/material';
+import { MarkdownService } from 'angular2-markdown';
 
 import { BlogPostsService } from '../../services/blog-posts.service';
 import { BlogPost } from '../../models/blog-post.type';
@@ -22,10 +23,10 @@ export class BlogPostComponent implements OnInit {
   prevBlogExists: boolean;
   nextBlogExists: boolean;
 
-  constructor(private route: ActivatedRoute, private router: Router, private blogPostsService: BlogPostsService) { }
+  constructor(private route: ActivatedRoute, private router: Router, private blogPostsService: BlogPostsService, private markdownService: MarkdownService) { }
 
   ngOnInit() {
-    // retrieve data
+    this.customizeLink();
     this.route.params
       .switchMap((params: Params) => this.blogPostsService.getAdjacentBlogPosts(params.id))
       .subscribe(posts => {
@@ -53,5 +54,41 @@ export class BlogPostComponent implements OnInit {
   onPrevPost(): void {
     this.post = null;
     this.router.navigate(['/blog', this.posts.prev.id]);
+  }
+
+  customizeLink() {
+    this.markdownService.renderer.link = function(href, title, text) {
+      if (this.options.sanitize) {
+        try {
+          var prot = decodeURIComponent(unescape(href))
+            .replace(/[^\w:]/g, '')
+            .toLowerCase();
+        } catch (e) {
+          return '';
+        }
+        if (prot.indexOf('javascript:') === 0 || prot.indexOf('vbscript:') === 0) {
+          return '';
+        }
+      }
+      var out = '<a href="' + href + '"';
+      if (title) {
+        out += ' title="' + title + '"';
+      }
+      out += 'target="_blank">' + text + '</a>';
+      return out;
+      function unescape(html) {
+        // explicitly match decimal, hex, and named HTML entities
+        return html.replace(/&(#(?:\d+)|(?:#x[0-9A-Fa-f]+)|(?:\w+));?/g, function(_, n) {
+          n = n.toLowerCase();
+          if (n === 'colon') return ':';
+          if (n.charAt(0) === '#') {
+            return n.charAt(1) === 'x'
+              ? String.fromCharCode(parseInt(n.substring(2), 16))
+              : String.fromCharCode(+n.substring(1));
+          }
+          return '';
+        });
+      }
+    }
   }
 }

@@ -1,21 +1,22 @@
-<md-sidenav-container #navContainer
-  (click)="toggleContainer()"
+<header fxLayout="row"
+  fxLayoutAlign="space-between center">
+  <md-icon (click)="toggle()">menu</md-icon>
+  <h1 (click)="navToGithub()">{{ title }}</h1>
+</header>
+<md-sidenav-container (backdropClick)="bdClick()"
   [@toggle]="state">
-  <header fxLayout="row"
-    fxLayoutAlign="space-between center">
-    <md-icon>menu</md-icon>
-    <h1>{{ title }}</h1>
-  </header>
-  <md-sidenav #sidenav mode="side">
+  <md-sidenav #sidenav mode="over">
     <nav md-tab-nav-bar
       fxLayout="column"
       fxLayoutAlign="flex-start center">
-      <div class="avatar"></div>
+      <div class="avatar"
+        (click)="navToGithub()"></div>
       <div fxLayout="column"
-      fxLayoutAlign="space-between"
-      fxLayoutGap="1rem">
+        fxLayoutAlign="space-between"
+        fxLayoutGap="1rem">
         <a md-tab-link
           *ngFor="let link of navLinks"
+          (click)="toggle()"
           [routerLink]="link.path">
           {{link.name | uppercase}}
         </a>

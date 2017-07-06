@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
-import { MarkdownModule } from 'angular2-markdown';
+import { MarkdownModule, MarkdownService } from 'angular2-markdown';
 
 import { MdCardModule } from '@angular/material';
 import { MdButtonModule } from '@angular/material';
@@ -28,7 +28,8 @@ import { BlogPostsService } from '../services/blog-posts.service';
     BlogPostComponent
   ],
   providers: [
-    BlogPostsService
+    BlogPostsService,
+    MarkdownService
   ]
 })
 

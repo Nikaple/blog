@@ -15,4 +15,8 @@ export class HomeProjectComponent implements OnInit {
   ngOnInit() {
   }
 
+  onClick($event) {
+    console.log('home-project event: ', $event.target);
+  }
+
 }
