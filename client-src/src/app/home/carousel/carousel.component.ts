@@ -27,7 +27,7 @@ import { Slide } from "../../models/slide.type";
         visibility: 'hidden'
       })),
       transition('center <=> *', [
-        animate('1000ms ease-in-out')
+        animate('1000ms ease')
       ]),
       transition('inactive <=> left', [
         animate(1)
