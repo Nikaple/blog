@@ -1,3 +1,8 @@
 <div class="carousel-container">
-  <p class="carousel">Carousel placeholder</p>
+  <li *ngFor="let slide of slides">
+    <img [src]="slide.url"
+    [@flyInOut]="getSlideState(slide)"
+    (@flyInOut.done)="animationDone($event)"
+    [alt]="slide.alt">
+  </li>
 </div>
