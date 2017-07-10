@@ -1,4 +1,4 @@
 <img [src]="slide.url"
-(@flyInOut.start)="animationStarted($event, slide)"
-(@flyInOut.done)="animationDone($event, slide)"
-[alt]="slide.alt">
+  [alt]="slide.alt"
+  [@flyInOut]="slide.isActive && slide.state"
+  (@flyInOut.done)="animationDone($event, slide)">

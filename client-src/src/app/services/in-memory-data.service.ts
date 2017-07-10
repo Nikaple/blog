@@ -3,6 +3,8 @@ import { InMemoryDbService } from 'angular-in-memory-web-api';
 import { UuidService } from '../utils/uuid/uuid.service';
 import { ProjectInfo } from '../models/project-info.type';
 import { BlogPost } from '../models/blog-post.type';
+import { carouselState } from "../models/carousel.state";
+import { Slide } from "../models/slide.type";
 import { blog1 } from './mock-data/mock-blog1';
 import { blog2 } from './mock-data/mock-blog2';
 import { blog3 } from './mock-data/mock-blog3';
@@ -16,26 +18,115 @@ import { blog8 } from './mock-data/mock-blog8';
 export class InMemoryDataService implements InMemoryDbService {
   blogposts: BlogPost[] ;
   projects: ProjectInfo[];
+  slides: Slide[];
 
   constructor(private uuidService: UuidService) {}
 
   createDb() {
-    if (!sessionStorage.getItem('home-projects')) {
-      this.projects = this.getMockHomeProjects();
-      sessionStorage.setItem('home-projects', JSON.stringify(this.projects));
-    } else {
-      this.projects = JSON.parse(sessionStorage.getItem('home-projects'));
-    }
-    if (!sessionStorage.getItem('blog-posts')) {
-      this.blogposts = this.getMockBlogPosts();
-      sessionStorage.setItem('blog-posts', JSON.stringify(this.blogposts));
-    } else {
-      this.blogposts = JSON.parse(sessionStorage.getItem('blog-posts'));
-    }
+    this.initSessionStorage('home-projects', this.projects, this.getMockHomeProjects.bind(this));
+    this.initSessionStorage('home-slides', this.slides, this.getMockHomeSlides.bind(this));
+    this.initSessionStorage('blog-posts', this.blogposts, this.getMockBlogPosts.bind(this));
     return {
+      slides: this.slides,
       projects: this.projects,
       blogposts: this.blogposts
     };
+  }
+
+  /**
+   * initialize the sessionStorage of 'key' using 'prop' property in this class
+   * by 'method'
+   *
+   * @param {string} key
+   * @param {*} prop
+   * @param {() => any} method
+   * @memberof InMemoryDataService
+   */
+  initSessionStorage(key: string, prop: any, method: () => any) {
+    if (!sessionStorage.getItem(key)) {
+      prop = method();
+      sessionStorage.setItem(key, JSON.stringify(prop));
+    } else {
+      prop = JSON.parse(sessionStorage.getItem(key));
+    }
+  }
+
+  getMockHomeSlides(): Slide[] {
+    return [
+      {
+        url: '../../../assets/imgs/example1.png',
+        alt: 'example1',
+        isActive: true,
+        state: carouselState.center
+      },
+      // {
+      //   url: '../../../assets/imgs/example2.png',
+      //   alt: 'example2'
+      // },
+      // {
+      //   url: '../../../assets/imgs/example3.png',
+      //   alt: 'example3'
+      // },
+      // {
+      //   url: '../../../assets/imgs/example4.png',
+      //   alt: 'example4'
+      // },
+      // {
+      //   url: '../../../assets/imgs/example5.png',
+      //   alt: 'example5'
+      // },
+      // {
+      //   url: '../../../assets/imgs/example6.png',
+      //   alt: 'example6'
+      // }
+    ];
+  }
+
+  getMockHomeProjects(): ProjectInfo[] {
+    return [
+      {
+        id: this.uuidService.generate(),
+        name: 'Post Spectra',
+        date: new Date(2017, 6).getTime(),
+        thumbnail: '../../assets/imgs/mock_thumbnail.jpg',
+        description: 'Formatting/validating NMR/HRMS spectra data',
+      },
+      {
+        id: this.uuidService.generate(),
+        name: 'Project 2',
+        date: new Date(2016, 8).getTime(),
+        thumbnail: '../../assets/imgs/mock_thumbnail.jpg',
+        description: 'Formatting/validating NMR/HRMS spectra data',
+      },
+      {
+        id: this.uuidService.generate(),
+        name: 'Project 3',
+        date: new Date(2015, 2).getTime(),
+        thumbnail: '../../assets/imgs/mock_thumbnail.jpg',
+        description: 'Formatting/validating NMR/HRMS spectra data',
+      },
+      {
+        id: this.uuidService.generate(),
+        name: 'Project 4',
+        date: new Date(2014, 8).getTime(),
+        thumbnail: '../../assets/imgs/mock_thumbnail.jpg',
+        description: 'Formatting/validating NMR/HRMS spectra data' ,
+      },
+      {
+        id: this.uuidService.generate(),
+        name: 'Project 5',
+        date: new Date(2015, 2).getTime(),
+        thumbnail: '../../assets/imgs/mock_thumbnail.jpg',
+        description: 'Formatting/validating NMR/HRMS spectra data',
+      },
+      {
+        id: this.uuidService.generate(),
+        name: 'Project 6',
+        date: new Date(2014, 8).getTime(),
+        thumbnail: '../../assets/imgs/mock_thumbnail.jpg',
+        description: 'Formatting/validating NMR/HRMS spectra data' ,
+      }
+    ];
   }
 
   getMockBlogPosts(): BlogPost[] {
@@ -87,52 +178,6 @@ export class InMemoryDataService implements InMemoryDbService {
         title: '前端工作面试HTML相关问题',
         date: new Date(2017, 1, 16).getTime(),
         content: blog8
-      }
-    ];
-  }
-  getMockHomeProjects(): ProjectInfo[] {
-    return [
-      {
-        id: this.uuidService.generate(),
-        name: 'Post Spectra',
-        date: new Date(2017, 6).getTime(),
-        thumbnail: '../../assets/imgs/mock_thumbnail.jpg',
-        description: 'Formatting/validating NMR/HRMS spectra data',
-      },
-      {
-        id: this.uuidService.generate(),
-        name: 'Project 2',
-        date: new Date(2016, 8).getTime(),
-        thumbnail: '../../assets/imgs/mock_thumbnail.jpg',
-        description: 'Formatting/validating NMR/HRMS spectra data',
-      },
-      {
-        id: this.uuidService.generate(),
-        name: 'Project 3',
-        date: new Date(2015, 2).getTime(),
-        thumbnail: '../../assets/imgs/mock_thumbnail.jpg',
-        description: 'Formatting/validating NMR/HRMS spectra data',
-      },
-      {
-        id: this.uuidService.generate(),
-        name: 'Project 4',
-        date: new Date(2014, 8).getTime(),
-        thumbnail: '../../assets/imgs/mock_thumbnail.jpg',
-        description: 'Formatting/validating NMR/HRMS spectra data' ,
-      },
-      {
-        id: this.uuidService.generate(),
-        name: 'Project 5',
-        date: new Date(2015, 2).getTime(),
-        thumbnail: '../../assets/imgs/mock_thumbnail.jpg',
-        description: 'Formatting/validating NMR/HRMS spectra data',
-      },
-      {
-        id: this.uuidService.generate(),
-        name: 'Project 6',
-        date: new Date(2014, 8).getTime(),
-        thumbnail: '../../assets/imgs/mock_thumbnail.jpg',
-        description: 'Formatting/validating NMR/HRMS spectra data' ,
       }
     ];
   }

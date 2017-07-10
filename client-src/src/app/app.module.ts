@@ -42,6 +42,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { BlogPostsService } from './services/blog-posts.service';
 import { ProjectsService } from './services/projects.service';
 import { RoutesService } from './services/routes.service';
+import { SlidesService } from './services/slides.service';
 import { SidenavComponent } from './sidenav/sidenav.component';
 
 @NgModule({
@@ -87,6 +88,7 @@ import { SidenavComponent } from './sidenav/sidenav.component';
   providers: [
     ProjectsService,
     RoutesService,
+    SlidesService,
     UuidService
   ],
   bootstrap: [AppComponent]

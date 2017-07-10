@@ -1,68 +1,57 @@
 import {
   Component,
   OnInit,
-  AfterContentChecked,
+  AfterViewInit,
   OnDestroy
 } from '@angular/core';
 import { Slide } from "../../models/slide.type";
+import { carouselState } from "../../models/carousel.state";
+import { SlidesService } from "../../services/slides.service";
 
 @Component({
   selector: 'app-carousel-container',
   templateUrl: './carousel-container.component.html',
   styleUrls: ['./carousel-container.component.css'],
+  providers: [SlidesService]
 })
-export class CarouselContainerComponent implements OnInit {
+export class CarouselContainerComponent implements OnInit, AfterViewInit {
   interval: number;
   activeSlide: Slide;
   nextSlide: Slide;
   slides: Slide[];
   // interval handle
   private slideInterval;
-  constructor() { }
+  constructor(private slidesService: SlidesService) { }
 
   ngOnInit() {
-    this.interval = 2000;
-    this.slides = [
-      {
-        url: '../../../assets/imgs/example1.png',
-        alt: 'example1'
-      },
-      {
-        url: '../../../assets/imgs/example2.png',
-        alt: 'example2'
-      },
-      {
-        url: '../../../assets/imgs/example3.png',
-        alt: 'example3'
-      },
-      // {
-      //   url: '../../../assets/imgs/example4.png',
-      //   alt: 'example4'
-      // },
-      // {
-      //   url: '../../../assets/imgs/example5.png',
-      //   alt: 'example5'
-      // },
-      // {
-      //   url: '../../../assets/imgs/example6.png',
-      //   alt: 'example6'
-      // }
-    ];
+    this.interval = 1000;
+    if (!sessionStorage.getItem('home-slides')) {
+      this.slidesService
+        .getAllSlides()
+        .then(response => {
+          this.slides = response;
+          sessionStorage.setItem('home-slides', JSON.stringify(response));
+        })
+        .catch(err => console.log(err));
+    } else {
+      this.slides = JSON.parse(sessionStorage.getItem('home-slides'));
+    }
   //   this.activeSlide = this.activeSlide || this.slides[0];
   //   this.nextSlide = this.nextSlide || this.slides[1];
-  //   this.cycle();
+    this.cycle();
   }
 
-  // ngAfterContentChecked() {
-  // }
+  ngAfterViewInit() {
+
+  }
 
   // ngOnDestroy() {
   //   this.stopTimer();
   // }
 
-  // cycle() {
-  //   this.startTimer();
-  // }
+  cycle() {
+    this.startTimer();
+  }
 
   // cycleToNext() {
   //   this.nextSlide = this.getNextSlide(this.getIdxBySlide(this.activeSlide));
@@ -81,13 +70,16 @@ export class CarouselContainerComponent implements OnInit {
   //   this.startTimer();
   // }
 
-  // private startTimer() {
-  //   if (typeof this.interval === 'number' && this.interval > 0) {
-  //     this.slideInterval = setInterval(() => {
-  //       this.cycleToNext();
-  //     }, this.interval);
-  //   }
-  // }
+  private startTimer() {
+    if (typeof this.interval === 'number' && this.interval > 0) {
+      this.slideInterval = setInterval(() => {
+        // this.cycleToNext();
+        // console.log(1);
+        // this.slides[0].isActive = true;
+        // this.slides[0].state = carouselState.left;
+      }, this.interval);
+    }
+  }
 
   // private stopTimer() {
   //   clearInterval(this.slideInterval);
