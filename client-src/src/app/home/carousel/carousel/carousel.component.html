@@ -1,0 +1,4 @@
+<img [src]="slide.url"
+(@flyInOut.start)="animationStarted($event, slide)"
+(@flyInOut.done)="animationDone($event, slide)"
+[alt]="slide.alt">

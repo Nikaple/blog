@@ -1,7 +1,7 @@
 md-card {
   width: 20rem;
   height: 31rem;
-  margin: 20px auto;
+  margin: 1.25rem auto;
 }
 
 @media screen and (min-width: 960px) and (max-width: 1279px) {

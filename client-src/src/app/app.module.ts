@@ -31,7 +31,8 @@ import { AboutComponent } from './about/about.component';
 import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './header/header.component';
 import { NavComponent } from './header/nav/nav.component';
-import { CarouselComponent } from './home/carousel/carousel.component';
+import { CarouselContainerComponent } from './home/carousel/carousel-container.component';
+import { CarouselComponent } from './home/carousel/carousel/carousel.component';
 import { HomeProjectsComponent } from './home/home-projects/home-projects.component';
 import { FooterComponent } from './footer/footer.component';
 import { HomeProjectComponent } from './home/home-projects/home-project/home-project.component';
@@ -51,6 +52,7 @@ import { SidenavComponent } from './sidenav/sidenav.component';
     NavComponent,
     // home
     HomeComponent,
+    CarouselContainerComponent,
     CarouselComponent,
     HomeProjectsComponent,
     HomeProjectComponent,

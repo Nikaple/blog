@@ -6,7 +6,7 @@
   overflow: hidden;
 }
 
-li {
+app-carousel {
   position: absolute;
   list-style: none;
   display: inline-block;
