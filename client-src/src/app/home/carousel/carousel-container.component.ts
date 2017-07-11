@@ -1,7 +1,6 @@
 import {
   Component,
   OnInit,
-  AfterViewInit,
   OnDestroy
 } from '@angular/core';
 import { Slide } from "../../models/slide.type";
@@ -14,136 +13,146 @@ import { SlidesService } from "../../services/slides.service";
   styleUrls: ['./carousel-container.component.css'],
   providers: [SlidesService]
 })
-export class CarouselContainerComponent implements OnInit, AfterViewInit {
+export class CarouselContainerComponent implements OnInit, OnDestroy {
   interval: number;
   activeSlide: Slide;
-  nextSlide: Slide;
   slides: Slide[];
+  clickable: boolean;
+  nextSlide: Slide;
   // interval handle
-  private slideInterval;
+  slideInterval;
   constructor(private slidesService: SlidesService) { }
 
   ngOnInit() {
-    this.interval = 1000;
-    if (!sessionStorage.getItem('home-slides')) {
-      this.slidesService
-        .getAllSlides()
-        .then(response => {
-          this.slides = response;
-          sessionStorage.setItem('home-slides', JSON.stringify(response));
-        })
-        .catch(err => console.log(err));
-    } else {
-      this.slides = JSON.parse(sessionStorage.getItem('home-slides'));
-    }
-  //   this.activeSlide = this.activeSlide || this.slides[0];
-  //   this.nextSlide = this.nextSlide || this.slides[1];
-    this.cycle();
+    this.interval = 2000;
+    this.slidesService
+      .getAllSlides()
+      .then(slides => {
+        this.slides = slides;
+        this.cycle();
+      })
+      .catch(err => console.log(err));
   }
 
-  ngAfterViewInit() {
-
+  ngOnDestroy() {
+    this.stopTimer();
   }
-
-  // ngOnDestroy() {
-  //   this.stopTimer();
-  // }
 
   cycle() {
+    if (this.slides.length < 2) {
+      throw Error('At least 2 slides should be provided.');
+    }
+    this.activeSlide = this.activeSlide || this.slides[0];
+    const activeIdx = this.getIdxBySlide(this.activeSlide);
+    this.setSlideState(activeIdx, true, carouselState.center);
+    this.nextSlide = this.nextSlide || this.slides[1];
     this.startTimer();
   }
 
-  // cycleToNext() {
-  //   this.nextSlide = this.getNextSlide(this.getIdxBySlide(this.activeSlide));
-  // }
+  cycleToNext() {
+    const nextIdx = this.getNextSlideIdx(this.getIdxBySlide(this.activeSlide));
+    this.cycleToSelected(nextIdx, true);
+  }
 
-  // cycleToPrev() {
-  //   this.nextSlide = this.getPrevSlide(this.getIdxBySlide(this.activeSlide));
-  // }
+  cycleToSelected(nextIdx: number, isCycle?: boolean) {
+    const activeIdx = this.getIdxBySlide(this.activeSlide);
 
-  // cycleToSelected(slideIdx: number) {
-  //   this.nextSlide = this.getSlideByIdx(slideIdx);
-  // }
+    this.nextSlide = this.slides[nextIdx];
 
-  // private restartTimer() {
-  //   this.stopTimer();
-  //   this.startTimer();
-  // }
+    this.setSlideState(activeIdx, true, carouselState.center);
+    this.setSlideState(nextIdx, true, this.getNextSlideState(isCycle));
+    setTimeout(() => {
+      this.setSlideState(activeIdx, true, this.getActiveSlideState(isCycle));
+      this.setSlideState(nextIdx, true, carouselState.center);
+      this.activeSlide = this.slides[nextIdx];
+    }, 1);
+    this.restartTimer();
+  }
+
+  private restartTimer() {
+    this.stopTimer();
+    this.startTimer();
+  }
 
   private startTimer() {
     if (typeof this.interval === 'number' && this.interval > 0) {
       this.slideInterval = setInterval(() => {
-        // this.cycleToNext();
-        // console.log(1);
-        // this.slides[0].isActive = true;
-        // this.slides[0].state = carouselState.left;
+        this.cycleToNext();
       }, this.interval);
     }
   }
 
-  // private stopTimer() {
-  //   clearInterval(this.slideInterval);
-  // }
+  private stopTimer() {
+    clearInterval(this.slideInterval);
+  }
 
-  // private getSlideByIdx(slideIdx: number): Slide {
-  //   return this.slides[slideIdx] || this.slides[0];
-  // }
+  private getSlideByIdx(slideIdx: number): Slide {
+    return this.slides[slideIdx] || this.slides[0];
+  }
 
-  // private getIdxBySlide(slideToQuery: Slide): number {
-  //   return this.slides.findIndex((slide) => {
-  //     return slideToQuery.url === slide.url;
-  //   });
-  // }
+  private getIdxBySlide(slideToQuery: Slide): number {
+    return this.slides.findIndex((slide) => {
+      return slideToQuery.url === slide.url;
+    });
+  }
 
-  // private getNextSlide(slideIdx: number): Slide {
-  //   const nextIdx =
-  //     slideIdx === this.slides.length - 1
-  //     ? 0
-  //     : slideIdx + 1;
-  //   return this.getSlideByIdx(nextIdx);
-  // }
+  private getNextSlideIdx(idx) {
+    return idx === this.slides.length - 1
+      ? 0
+      : idx + 1
+  }
 
-  // private getPrevSlide(slideIdx: number): Slide {
-  //   const prevIdx =
-  //     slideIdx === 0
-  //     ? this.slides.length - 1
-  //     : slideIdx - 1;
-  //   return this.getSlideByIdx(prevIdx);
-  // }
+  private getNextSlide(slideIdx: number): Slide {
+    const nextIdx = this.getNextSlideIdx(slideIdx);
+    return this.getSlideByIdx(nextIdx);
+  }
 
-  // private getSlideState(slide) {
-  //   const activeIdx = this.getIdxBySlide(this.activeSlide);
-  //   if (this.isSameSlide(slide, this.activeSlide)) {
-  //     return carouselState.active.center;
-  //   } else {
-  //     return carouselState.inactive;
-  //   }
-  // }
+  private setSlideState(slideIdx, isActive, state) {
+    if (this.slides) {
+      const slide = this.slides[slideIdx];
+      slide.isActive = isActive;
+      slide.state = state;
+    }
+  }
 
-  // private getSlideDirection(slide) {
-  //   const activeIdx = this.getIdxBySlide(this.activeSlide);
-  //   const thisIdx = this.getIdxBySlide(slide);
-  //   return thisIdx >= activeIdx ? CarouselDirection.Right : CarouselDirection.Left;
-  // }
+  private getNextSlideState(isCycle?: boolean) {
+    const activeIdx = this.getIdxBySlide(this.activeSlide);
+    const nextIdx = this.getIdxBySlide(this.nextSlide);
+    if (activeIdx === this.slides.length - 1 && nextIdx === 0 && isCycle) {
+      return carouselState.right;
+    }
+    return nextIdx === activeIdx
+      ? carouselState.center
+      : nextIdx > activeIdx
+        ? carouselState.right
+        : carouselState.left;
+  }
 
-  // private isActiveSlide(slide: Slide) {
-  //   return this.isSameSlide(slide, this.activeSlide);
-  // }
+  private getActiveSlideState(isCycle?: boolean) {
+    const nextState = this.getNextSlideState(isCycle);
+    switch(nextState) {
+      case carouselState.left:
+        return carouselState.right;
+      case carouselState.center:
+        return carouselState.center;
+      case carouselState.right:
+        return carouselState.left;
+    }
+  }
 
-  // private isNextSlide(slide: Slide) {
-  //   return this.isSameSlide(slide, this.nextSlide);
-  // }
+  private isActiveSlide(slide: Slide) {
+    return this.isSameSlide(slide, this.activeSlide);
+  }
 
-  // private isSameSlide(slide1: Slide, slide2: Slide) {
-  //   return slide1.url === slide2.url;
-  // }
+  private isNextSlide(slide: Slide) {
+    return this.isSameSlide(slide, this.nextSlide);
+  }
 
-  // private animationStarted($event, slide) {
-  //   const flyDirection = this.getSlideDirection(slide);
-  //   console.log(CarouselDirection[flyDirection]);
-  // }
+  private isSameSlide(slide1: Slide, slide2: Slide) {
+    return slide1.url === slide2.url;
+  }
+  private changeClickable($event: boolean) {
+    this.clickable = $event;
+  }
 
-  // private animationDone($event, slide) {
-  //   // console.log($event, slide);
-  // }
 }

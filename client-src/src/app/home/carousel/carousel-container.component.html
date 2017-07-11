@@ -1,8 +1,12 @@
 <div class="carousel-container">
+  <ol fxLayout="row"
+    fxLayoutAlign="center center">
+    <li *ngFor="let slide of slides"
+      [ngClass]="isActiveSlide(slide) ? 'active' : ''"
+      (click)="clickable && cycleToSelected(getIdxBySlide(slide), false)">
+    </li>
+  </ol>
   <app-carousel *ngFor="let slide of slides"
+    (clickable)="changeClickable($event)"
     [slide]="slide"></app-carousel>
 </div>
-<!--<li *ngFor="let slide of slides"
-  (click)="cycleToSelected(getIdxBySlide(slide))">
-  {{getIdxBySlide(slide)}}
-</li>-->

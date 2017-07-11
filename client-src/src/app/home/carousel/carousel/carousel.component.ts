@@ -2,7 +2,10 @@ import {
   Component,
   OnInit,
   OnDestroy,
-  Input
+  Input,
+  Output,
+  AnimationTransitionEvent,
+  EventEmitter
 } from '@angular/core';
 import { trigger, state, style, animate, transition, keyframes } from '@angular/animations';
 import { Slide } from "../../../models/slide.type";
@@ -30,6 +33,9 @@ import { carouselState } from "../../../models/carousel.state";
       transition('center <=> *', [
         animate('1000ms ease')
       ]),
+      transition('void => *', [
+        animate(1)
+      ]),
       // transition('inactive <=> left', [
       //   animate(1)
       // ]),
@@ -44,6 +50,7 @@ import { carouselState } from "../../../models/carousel.state";
 })
 export class CarouselComponent implements OnInit {
   @Input() slide: Slide;
+  @Output() clickable = new EventEmitter();
   constructor() { }
 
   ngOnInit() {
@@ -77,15 +84,19 @@ export class CarouselComponent implements OnInit {
   //   return slide1.url === slide2.url;
   // }
 
-  // private animationStarted($event, slide) {
-  //   const flyDirection = this.getSlideDirection(slide);
-  //   console.log(CarouselDirection[flyDirection]);
-  // }
+  private transitionStart($event, slide) {
+    // console.log('transitionStart');
+    this.clickable.emit(false);
+  }
 
-  private animationDone($event, slide) {
-    // this.state = this.state === CarouselState.Active
-    //   ? CarouselState.Inactive
-    //   : CarouselState.Active;
-    console.log($event, slide);
+  private transitionDone($event: AnimationTransitionEvent, slide: Slide) {
+    if ($event.fromState === carouselState.center) {
+      if ($event.toState === carouselState.left || $event.toState === carouselState.right) {
+        slide.isActive = false;
+        slide.state = carouselState.center;
+      }
+    }
+    // console.log('transitionDone');
+    this.clickable.emit(true);
   }
 }

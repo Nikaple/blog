@@ -12,6 +12,33 @@ app-carousel {
   display: inline-block;
 }
 
+ol {
+  position: absolute;
+  display: inline-block;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+  bottom: 1rem;
+}
+
+li {
+  border-top: 0.25rem solid rgba(255,255,255,0.6);
+  width: 2rem;
+  position: relative;
+  list-style: none;
+  margin: 0.3rem;
+  cursor: pointer;
+}
+
+li.active {
+  border-color: rgba(255,255,255,1);
+}
+
+/*li::before {
+  position: absolute;
+  content: "";
+}*/
+
 img {
   width: 100%;
 }

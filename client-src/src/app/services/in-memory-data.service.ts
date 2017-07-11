@@ -56,29 +56,27 @@ export class InMemoryDataService implements InMemoryDbService {
       {
         url: '../../../assets/imgs/example1.png',
         alt: 'example1',
-        isActive: true,
-        state: carouselState.center
       },
-      // {
-      //   url: '../../../assets/imgs/example2.png',
-      //   alt: 'example2'
-      // },
-      // {
-      //   url: '../../../assets/imgs/example3.png',
-      //   alt: 'example3'
-      // },
-      // {
-      //   url: '../../../assets/imgs/example4.png',
-      //   alt: 'example4'
-      // },
-      // {
-      //   url: '../../../assets/imgs/example5.png',
-      //   alt: 'example5'
-      // },
-      // {
-      //   url: '../../../assets/imgs/example6.png',
-      //   alt: 'example6'
-      // }
+      {
+        url: '../../../assets/imgs/example2.png',
+        alt: 'example2',
+      },
+      {
+        url: '../../../assets/imgs/example3.png',
+        alt: 'example3'
+      },
+      {
+        url: '../../../assets/imgs/example4.png',
+        alt: 'example4'
+      },
+      {
+        url: '../../../assets/imgs/example5.png',
+        alt: 'example5'
+      },
+      {
+        url: '../../../assets/imgs/example6.png',
+        alt: 'example6'
+      }
     ];
   }
 

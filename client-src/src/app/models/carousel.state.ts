@@ -7,8 +7,3 @@ export const carouselState: {
   center: 'center',
   right: 'right'
 }
-
-export enum CarouselDirection {
-  Left = 0,
-  Right
-}
