@@ -1,4 +1,6 @@
-<div class="carousel-container">
+<div class="carousel-container"
+  (mouseenter)="pause()"
+  (mouseleave)="cycle()">
   <ol fxLayout="row"
     fxLayoutAlign="center center">
     <li *ngFor="let slide of slides"

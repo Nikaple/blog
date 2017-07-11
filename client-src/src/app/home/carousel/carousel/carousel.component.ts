@@ -26,25 +26,12 @@ import { carouselState } from "../../../models/carousel.state";
       state(carouselState.right, style({
         transform: 'translateX(100%)',
       })),
-      // state('inactive', style({
-      //   transform: 'translateX(0)',
-      //   visibility: 'hidden'
-      // })),
       transition('center <=> *', [
         animate('1000ms ease')
       ]),
       transition('void => *', [
         animate(1)
       ]),
-      // transition('inactive <=> left', [
-      //   animate(1)
-      // ]),
-      // transition('inactive <=> right', [
-      //   animate(1)
-      // ]),
-      // transition('right <=> left', [
-      //   animate(1)
-      // ])
     ])
   ],
 })
@@ -57,35 +44,7 @@ export class CarouselComponent implements OnInit {
     this.slide.isActive = this.slide.isActive || false;
   }
 
-  // private getSlideState(slide) {
-  //   const activeIdx = this.getIdxBySlide(this.activeSlide);
-  //   if (this.isSameSlide(slide, this.activeSlide)) {
-  //     return carouselState.active.center;
-  //   } else {
-  //     return carouselState.inactive;
-  //   }
-  // }
-
-  // private getSlideDirection(slide) {
-  //   const activeIdx = this.getIdxBySlide(this.activeSlide);
-  //   const thisIdx = this.getIdxBySlide(slide);
-  //   return thisIdx >= activeIdx ? CarouselDirection.Right : CarouselDirection.Left;
-  // }
-
-  // private isActiveSlide(slide: Slide) {
-  //   return this.isSameSlide(slide, this.activeSlide);
-  // }
-
-  // private isNextSlide(slide: Slide) {
-  //   return this.isSameSlide(slide, this.nextSlide);
-  // }
-
-  // private isSameSlide(slide1: Slide, slide2: Slide) {
-  //   return slide1.url === slide2.url;
-  // }
-
   private transitionStart($event, slide) {
-    // console.log('transitionStart');
     this.clickable.emit(false);
   }
 
@@ -96,7 +55,6 @@ export class CarouselComponent implements OnInit {
         slide.state = carouselState.center;
       }
     }
-    // console.log('transitionDone');
     this.clickable.emit(true);
   }
 }

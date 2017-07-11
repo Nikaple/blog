@@ -34,11 +34,6 @@ li.active {
   border-color: rgba(255,255,255,1);
 }
 
-/*li::before {
-  position: absolute;
-  content: "";
-}*/
-
 img {
   width: 100%;
 }

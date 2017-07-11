@@ -24,7 +24,7 @@ export class CarouselContainerComponent implements OnInit, OnDestroy {
   constructor(private slidesService: SlidesService) { }
 
   ngOnInit() {
-    this.interval = 2000;
+    this.interval = 5000;
     this.slidesService
       .getAllSlides()
       .then(slides => {
@@ -54,19 +54,27 @@ export class CarouselContainerComponent implements OnInit, OnDestroy {
     this.cycleToSelected(nextIdx, true);
   }
 
+  cycleToPrev() {
+    const prevIdx = this.getPrevSlideIdx(this.getIdxBySlide(this.activeSlide));
+    this.cycleToSelected(prevIdx, true);
+  }
+
   cycleToSelected(nextIdx: number, isCycle?: boolean) {
     const activeIdx = this.getIdxBySlide(this.activeSlide);
-
     this.nextSlide = this.slides[nextIdx];
-
+    // initial state
     this.setSlideState(activeIdx, true, carouselState.center);
     this.setSlideState(nextIdx, true, this.getNextSlideState(isCycle));
-    setTimeout(() => {
+    requestAnimationFrame(() => {
+      // state next frame
       this.setSlideState(activeIdx, true, this.getActiveSlideState(isCycle));
       this.setSlideState(nextIdx, true, carouselState.center);
       this.activeSlide = this.slides[nextIdx];
-    }, 1);
-    this.restartTimer();
+    });
+  }
+
+  pause() {
+    this.stopTimer();
   }
 
   private restartTimer() {
@@ -99,7 +107,13 @@ export class CarouselContainerComponent implements OnInit, OnDestroy {
   private getNextSlideIdx(idx) {
     return idx === this.slides.length - 1
       ? 0
-      : idx + 1
+      : idx + 1;
+  }
+
+  private getPrevSlideIdx(idx) {
+    return idx === 0
+      ? this.slides.length - 1
+      : idx - 1;
   }
 
   private getNextSlide(slideIdx: number): Slide {
