@@ -15,16 +15,8 @@ export class HomeProjectsComponent implements OnInit {
   constructor(private projectsService: ProjectsService) { }
 
   ngOnInit() {
-    if (!sessionStorage.getItem('home-projects')) {
-      this.projectsService
-        .getAllProjects()
-        .then(response => {
-          this.projects = response;
-          sessionStorage.setItem('home-projects', JSON.stringify(response));
-        })
-        .catch(err => console.log(err));
-    } else {
-      this.projects = JSON.parse(sessionStorage.getItem('home-projects'));
-    }
+    this.projectsService.getAllProjects()
+      .then(projects => this.projects = projects)
+      .catch(err => console.log(err));
   }
 }

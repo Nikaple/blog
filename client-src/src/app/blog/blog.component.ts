@@ -17,17 +17,9 @@ export class BlogComponent implements OnInit {
   constructor(private router: Router, private blogPostsService: BlogPostsService) { }
 
   ngOnInit() {
-    if (!sessionStorage.getItem('blog-posts')) {
-      this.blogPostsService
-        .getAllBlogPosts()
-        .then(response => {
-          this.blogPosts = response;
-          sessionStorage.setItem('blog-posts', JSON.stringify(response));
-        })
-        .catch(err => console.log(err));
-    } else {
-      this.blogPosts = JSON.parse(sessionStorage.getItem('blog-posts'));
-    }
+    this.blogPostsService.getAllBlogPosts().then(posts => {
+      this.blogPosts = posts;
+    });
   }
 
   onSelect(post: BlogPost) {

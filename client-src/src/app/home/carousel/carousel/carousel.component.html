@@ -1,6 +1,6 @@
-<img [src]="slide.url"
-  [alt]="slide.alt"
-  [style.visibility]="slide.isActive ? 'visible' : 'hidden'"
-  [@flyInOut]="slide.isActive && slide.state"
+<img [src]="slide?.url"
+  [alt]="slide?.alt"
+  [style.visibility]="slide?.isActive ? 'visible' : 'hidden'"
+  [@flyInOut]="slide?.isActive && slide?.state"
   (@flyInOut.start)="transitionStart($event, slide)"
   (@flyInOut.done)="transitionDone($event, slide)">

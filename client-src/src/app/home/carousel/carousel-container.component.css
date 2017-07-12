@@ -28,6 +28,7 @@ li {
   list-style: none;
   margin: 0.3rem;
   cursor: pointer;
+  transition: all 1s ease;
 }
 
 li.active {
@@ -36,4 +37,33 @@ li.active {
 
 img {
   width: 100%;
+}
+
+div.icon-container {
+  position: relative;
+  width: 8rem;
+  z-index: 1;
+}
+
+div.icon-container:hover md-icon{
+  opacity: 0.8;
+  text-shadow: 1px 1px 2px lightgray;
+}
+
+md-icon {
+  opacity: 0.3;
+  position: absolute;
+  color: rgba(255, 255, 255, 1);
+  z-index: 2;
+  top: 50%;
+  left: 50%;
+  display: inline-block;
+  transition: all 0.2s ease;
+  width: 4rem;
+  height: 4rem;
+  transform: translate(-50%, -50%);
+}
+
+md-icon::before {
+  font-size: 4rem;
 }

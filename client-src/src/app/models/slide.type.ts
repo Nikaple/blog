@@ -7,4 +7,6 @@ export interface Slide {
   alt: string;
   isActive?: boolean;
   state?: CarouselState;
+  fromState?: CarouselState;
+  toState?: CarouselState;
 }

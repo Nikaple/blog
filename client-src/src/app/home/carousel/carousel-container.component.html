@@ -1,6 +1,14 @@
 <div class="carousel-container"
+  fxLayout="row"
+  fxLayoutAlign="space-between stretch"
   (mouseenter)="pause()"
   (mouseleave)="cycle()">
+  <div class="icon-container"
+    (click)="clickable && cycleToPrev(true)">
+    <md-icon class="icon-left" fontSet="fa"
+      fontIcon="fa-arrow-circle-o-left"
+      aria-hidden="true"></md-icon>
+  </div>
   <ol fxLayout="row"
     fxLayoutAlign="center center">
     <li *ngFor="let slide of slides"
@@ -8,7 +16,15 @@
       (click)="clickable && cycleToSelected(getIdxBySlide(slide), false)">
     </li>
   </ol>
+  <div class="icon-container"
+    (click)="clickable && cycleToNext()">
+    <md-icon class="icon-right" fontSet="fa"
+      fontIcon="fa-arrow-circle-o-right"
+      aria-hidden="true"></md-icon>
+  </div>
   <app-carousel *ngFor="let slide of slides"
     (clickable)="changeClickable($event)"
     [slide]="slide"></app-carousel>
 </div>
+
+

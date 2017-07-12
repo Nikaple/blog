@@ -5,7 +5,11 @@ import {
   Input,
   Output,
   AnimationTransitionEvent,
-  EventEmitter
+  EventEmitter,
+  AfterContentChecked,
+  AfterViewChecked,
+  OnChanges,
+  DoCheck
 } from '@angular/core';
 import { trigger, state, style, animate, transition, keyframes } from '@angular/animations';
 import { Slide } from "../../../models/slide.type";
@@ -35,7 +39,7 @@ import { carouselState } from "../../../models/carousel.state";
     ])
   ],
 })
-export class CarouselComponent implements OnInit {
+export class CarouselComponent implements OnInit, AfterViewChecked {
   @Input() slide: Slide;
   @Output() clickable = new EventEmitter();
   constructor() { }
@@ -44,17 +48,24 @@ export class CarouselComponent implements OnInit {
     this.slide.isActive = this.slide.isActive || false;
   }
 
+  ngAfterViewChecked() {
+    // console.log(`when check, ${this.slide.alt} have an ${this.slide.isActive ? 'active' : 'inactive'} state ${this.slide.state}, with toState ${this.slide.toState}`);
+    this.slide.state = this.slide.toState || this.slide.state;
+  }
+
   private transitionStart($event, slide) {
     this.clickable.emit(false);
   }
 
   private transitionDone($event: AnimationTransitionEvent, slide: Slide) {
+    // console.log(`animation of ${slide.alt} from state ${$event.fromState} to state ${$event.toState}`);
     if ($event.fromState === carouselState.center) {
       if ($event.toState === carouselState.left || $event.toState === carouselState.right) {
         slide.isActive = false;
         slide.state = carouselState.center;
       }
     }
+    slide.toState = null;
     this.clickable.emit(true);
   }
 }

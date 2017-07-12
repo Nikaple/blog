@@ -23,36 +23,15 @@ export class InMemoryDataService implements InMemoryDbService {
   constructor(private uuidService: UuidService) {}
 
   createDb() {
-    this.initSessionStorage('home-projects', this.projects, this.getMockHomeProjects.bind(this));
-    this.initSessionStorage('home-slides', this.slides, this.getMockHomeSlides.bind(this));
-    this.initSessionStorage('blog-posts', this.blogposts, this.getMockBlogPosts.bind(this));
     return {
-      slides: this.slides,
-      projects: this.projects,
-      blogposts: this.blogposts
+      slides: this.getMockHomeSlides(),
+      projects: this.getMockHomeProjects(),
+      blogposts: this.getMockBlogPosts()
     };
   }
 
-  /**
-   * initialize the sessionStorage of 'key' using 'prop' property in this class
-   * by 'method'
-   *
-   * @param {string} key
-   * @param {*} prop
-   * @param {() => any} method
-   * @memberof InMemoryDataService
-   */
-  initSessionStorage(key: string, prop: any, method: () => any) {
-    if (!sessionStorage.getItem(key)) {
-      prop = method();
-      sessionStorage.setItem(key, JSON.stringify(prop));
-    } else {
-      prop = JSON.parse(sessionStorage.getItem(key));
-    }
-  }
-
   getMockHomeSlides(): Slide[] {
-    return [
+    const slides: Slide[] = [
       {
         url: '../../../assets/imgs/example1.png',
         alt: 'example1',
@@ -78,6 +57,11 @@ export class InMemoryDataService implements InMemoryDbService {
         alt: 'example6'
       }
     ];
+    return slides.map((slide, index) => {
+      slide.isActive = index === 0 ? true : false;
+      slide.state = carouselState.center;
+      return slide;
+    });
   }
 
   getMockHomeProjects(): ProjectInfo[] {

@@ -17,19 +17,23 @@ export class CarouselContainerComponent implements OnInit, OnDestroy {
   interval: number;
   activeSlide: Slide;
   slides: Slide[];
-  clickable: boolean;
   nextSlide: Slide;
+  clickable: boolean;
   // interval handle
   slideInterval;
   constructor(private slidesService: SlidesService) { }
 
   ngOnInit() {
-    this.interval = 5000;
-    this.slidesService
-      .getAllSlides()
+    this.interval = 2000;
+    this.clickable = true;
+    this.slidesService.getAllSlides()
       .then(slides => {
         this.slides = slides;
         this.cycle();
+        // this.activeSlide = this.slides[0];
+        // setTimeout(() => {
+          // this.stopTimer();
+        // }, 500);
       })
       .catch(err => console.log(err));
   }
@@ -43,34 +47,34 @@ export class CarouselContainerComponent implements OnInit, OnDestroy {
       throw Error('At least 2 slides should be provided.');
     }
     this.activeSlide = this.activeSlide || this.slides[0];
-    const activeIdx = this.getIdxBySlide(this.activeSlide);
-    this.setSlideState(activeIdx, true, carouselState.center);
-    this.nextSlide = this.nextSlide || this.slides[1];
     this.startTimer();
   }
 
   cycleToNext() {
     const nextIdx = this.getNextSlideIdx(this.getIdxBySlide(this.activeSlide));
+    this.nextSlide = this.slides[nextIdx];
     this.cycleToSelected(nextIdx, true);
   }
 
   cycleToPrev() {
     const prevIdx = this.getPrevSlideIdx(this.getIdxBySlide(this.activeSlide));
+    this.nextSlide = this.slides[prevIdx];
     this.cycleToSelected(prevIdx, true);
   }
 
   cycleToSelected(nextIdx: number, isCycle?: boolean) {
     const activeIdx = this.getIdxBySlide(this.activeSlide);
+    if (nextIdx === activeIdx) {
+      return;
+    }
     this.nextSlide = this.slides[nextIdx];
-    // initial state
-    this.setSlideState(activeIdx, true, carouselState.center);
-    this.setSlideState(nextIdx, true, this.getNextSlideState(isCycle));
-    requestAnimationFrame(() => {
-      // state next frame
-      this.setSlideState(activeIdx, true, this.getActiveSlideState(isCycle));
-      this.setSlideState(nextIdx, true, carouselState.center);
+    if (this.clickable) {
+      const nextState = this.getNextSlideState(isCycle);
+      const activeState = this.getActiveSlideState(nextState, isCycle);
+      this.setSlideState(nextIdx, true, nextState, carouselState.center);
+      this.setSlideState(activeIdx, true, carouselState.center, activeState);
       this.activeSlide = this.slides[nextIdx];
-    });
+    }
   }
 
   pause() {
@@ -121,11 +125,12 @@ export class CarouselContainerComponent implements OnInit, OnDestroy {
     return this.getSlideByIdx(nextIdx);
   }
 
-  private setSlideState(slideIdx, isActive, state) {
+  private setSlideState(slideIdx, isActive, state, toState) {
     if (this.slides) {
       const slide = this.slides[slideIdx];
       slide.isActive = isActive;
       slide.state = state;
+      slide.toState = toState;
     }
   }
 
@@ -135,6 +140,9 @@ export class CarouselContainerComponent implements OnInit, OnDestroy {
     if (activeIdx === this.slides.length - 1 && nextIdx === 0 && isCycle) {
       return carouselState.right;
     }
+    if (activeIdx === 0 && nextIdx === this.slides.length - 1 && isCycle) {
+      return carouselState.left;
+    }
     return nextIdx === activeIdx
       ? carouselState.center
       : nextIdx > activeIdx
@@ -142,8 +150,7 @@ export class CarouselContainerComponent implements OnInit, OnDestroy {
         : carouselState.left;
   }
 
-  private getActiveSlideState(isCycle?: boolean) {
-    const nextState = this.getNextSlideState(isCycle);
+  private getActiveSlideState(nextState, isCycle?: boolean) {
     switch(nextState) {
       case carouselState.left:
         return carouselState.right;
@@ -165,6 +172,7 @@ export class CarouselContainerComponent implements OnInit, OnDestroy {
   private isSameSlide(slide1: Slide, slide2: Slide) {
     return slide1.url === slide2.url;
   }
+
   private changeClickable($event: boolean) {
     this.clickable = $event;
   }
