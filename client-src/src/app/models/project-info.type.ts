@@ -4,4 +4,5 @@ export interface ProjectInfo {
   date: number,
   thumbnail: string,
   description: string, // less than 128 characters
+  link: string,
 }

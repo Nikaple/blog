@@ -1,15 +1,11 @@
 import {
   Component,
   OnInit,
-  OnDestroy,
+  AfterViewChecked,
   Input,
   Output,
-  AnimationTransitionEvent,
   EventEmitter,
-  AfterContentChecked,
-  AfterViewChecked,
-  OnChanges,
-  DoCheck
+  AnimationTransitionEvent,
 } from '@angular/core';
 import { trigger, state, style, animate, transition, keyframes } from '@angular/animations';
 import { Slide } from "../../../models/slide.type";
@@ -49,7 +45,6 @@ export class CarouselComponent implements OnInit, AfterViewChecked {
   }
 
   ngAfterViewChecked() {
-    // console.log(`when check, ${this.slide.alt} have an ${this.slide.isActive ? 'active' : 'inactive'} state ${this.slide.state}, with toState ${this.slide.toState}`);
     this.slide.state = this.slide.toState || this.slide.state;
   }
 
@@ -58,7 +53,6 @@ export class CarouselComponent implements OnInit, AfterViewChecked {
   }
 
   private transitionDone($event: AnimationTransitionEvent, slide: Slide) {
-    // console.log(`animation of ${slide.alt} from state ${$event.fromState} to state ${$event.toState}`);
     if ($event.fromState === carouselState.center) {
       if ($event.toState === carouselState.left || $event.toState === carouselState.right) {
         slide.isActive = false;

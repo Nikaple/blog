@@ -2,6 +2,26 @@ md-card {
   width: 20rem;
   height: 31rem;
   margin: 1.25rem auto;
+  padding-bottom: 0.75rem;
+}
+
+md-card-footer {
+  position: absolute;
+  display: block;
+  bottom: 0.5rem;
+}
+
+a {
+  text-decoration: none;
+  position: relative;
+  display: block;
+  text-align: right;
+  right: 0.5rem;
+  color: #001bb1;
+}
+
+a:visited {
+  color: #555d8a;
 }
 
 @media screen and (min-width: 960px) and (max-width: 1279px) {
@@ -14,14 +34,14 @@ md-card {
 @media screen and (min-width: 600px) and (max-width: 959px) {
   md-card {
     width: 14rem;
-    height: 25rem;
+    height: 28rem;
   }
 }
 
 @media screen and (max-width: 599px) {
   md-card {
     width: 16rem;
-    height: 25rem;
+    height: 28rem;
   }
 }
 

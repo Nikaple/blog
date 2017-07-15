@@ -1,13 +1,20 @@
+.wrapper {
+  width: 100%;
+}
+
 .carousel-container {
   position: relative;
-  width: 1200px;
-  height: 378px;
+  margin: 0 3rem;
+  max-width: 90rem;
+  height: 23.75rem;
   background-color: rgba(0, 0, 0, 0.2);
   overflow: hidden;
 }
 
 app-carousel {
   position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
   list-style: none;
   display: inline-block;
 }
@@ -43,6 +50,7 @@ div.icon-container {
   position: relative;
   width: 8rem;
   z-index: 1;
+  cursor: pointer;
 }
 
 div.icon-container:hover md-icon{

@@ -33,7 +33,7 @@ export class InMemoryDataService implements InMemoryDbService {
   getMockHomeSlides(): Slide[] {
     const slides: Slide[] = [
       {
-        url: '../../../assets/imgs/example1.png',
+        url: '../../../assets/imgs/carousel1.jpg',
         alt: 'example1',
       },
       {
@@ -69,44 +69,26 @@ export class InMemoryDataService implements InMemoryDbService {
       {
         id: this.uuidService.generate(),
         name: 'Post Spectra',
-        date: new Date(2017, 6).getTime(),
-        thumbnail: '../../assets/imgs/mock_thumbnail.jpg',
-        description: 'Formatting/validating NMR/HRMS spectra data',
+        date: new Date(2017, 4, 10).getTime(),
+        thumbnail: '../../assets/imgs/project1.jpg',
+        description: 'Produce your SI easier.',
+        link: 'https://nikaple.github.io/',
       },
       {
         id: this.uuidService.generate(),
-        name: 'Project 2',
-        date: new Date(2016, 8).getTime(),
-        thumbnail: '../../assets/imgs/mock_thumbnail.jpg',
-        description: 'Formatting/validating NMR/HRMS spectra data',
+        name: '3D Barrage Designer',
+        date: new Date(2016, 2, 15).getTime(),
+        thumbnail: '../../assets/imgs/project2.jpg',
+        description: 'Design your own 3d barrages!',
+        link: 'https://nikaple.github.io/3d-barrage-designer'
       },
       {
         id: this.uuidService.generate(),
-        name: 'Project 3',
-        date: new Date(2015, 2).getTime(),
-        thumbnail: '../../assets/imgs/mock_thumbnail.jpg',
-        description: 'Formatting/validating NMR/HRMS spectra data',
-      },
-      {
-        id: this.uuidService.generate(),
-        name: 'Project 4',
-        date: new Date(2014, 8).getTime(),
-        thumbnail: '../../assets/imgs/mock_thumbnail.jpg',
-        description: 'Formatting/validating NMR/HRMS spectra data' ,
-      },
-      {
-        id: this.uuidService.generate(),
-        name: 'Project 5',
-        date: new Date(2015, 2).getTime(),
-        thumbnail: '../../assets/imgs/mock_thumbnail.jpg',
-        description: 'Formatting/validating NMR/HRMS spectra data',
-      },
-      {
-        id: this.uuidService.generate(),
-        name: 'Project 6',
-        date: new Date(2014, 8).getTime(),
-        thumbnail: '../../assets/imgs/mock_thumbnail.jpg',
-        description: 'Formatting/validating NMR/HRMS spectra data' ,
+        name: 'JS Calculator',
+        date: new Date(2015, 12, 28).getTime(),
+        thumbnail: '../../assets/imgs/project3.jpg',
+        description: 'A simple calculator powered by JS.',
+        link: 'https://nikaple.github.io/javascript-calculator',
       }
     ];
   }
