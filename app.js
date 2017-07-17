@@ -1,9 +1,7 @@
 const express = require('express');
 const path = require('path');
-const bodyParser = require('body-parser');
-const cors = require('cors');
-const passport = require('passport');
 const mongoose = require('mongoose');
+const cors = require('cors');
 
 const config = require('./config/database');
 mongoose.connect(config.database);
@@ -18,22 +16,18 @@ mongoose.connection.on('error', (err) => {
 
 const app = express();
 
-const users = require('./routes/users');
+const api = require('./routes/api');
 
 // Port number
 const PORT = 3000;
 
-// CORS MW
-app.use(cors());
+app.use(cors({origin: 'http://localhost:4200'}))
 
 // Static folder
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Body parser MW
-app.use(bodyParser.json());
-
-// User router
-app.use('/users', users);
+// api router
+app.use('/api', api);
 
 // Index route
 app.get('/', (req, res) => {
