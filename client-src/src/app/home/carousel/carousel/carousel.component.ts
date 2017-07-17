@@ -8,8 +8,8 @@ import {
   AnimationTransitionEvent,
 } from '@angular/core';
 import { trigger, state, style, animate, transition, keyframes } from '@angular/animations';
-import { Slide } from "../../../models/slide.type";
-import { carouselState } from "../../../models/carousel.state";
+import { Slide } from '../../../models/slide.type';
+import { carouselState } from '../../../models/carousel.state';
 
 @Component({
   selector: 'app-carousel',
@@ -48,11 +48,11 @@ export class CarouselComponent implements OnInit, AfterViewChecked {
     this.slide.state = this.slide.toState || this.slide.state;
   }
 
-  private transitionStart($event, slide) {
+  transitionStart($event, slide) {
     this.clickable.emit(false);
   }
 
-  private transitionDone($event: AnimationTransitionEvent, slide: Slide) {
+  transitionDone($event: AnimationTransitionEvent, slide: Slide) {
     if ($event.fromState === carouselState.center) {
       if ($event.toState === carouselState.left || $event.toState === carouselState.right) {
         slide.isActive = false;

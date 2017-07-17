@@ -2,28 +2,33 @@
   fxLayout="row"
   fxLayoutAlign="space-between stretch"
   (mouseenter)="pause()"
-  (mouseleave)="cycle()">
+  (mouseleave)="cycle()"
+  >
   <div class="icon-container"
-    (click)="clickable && cycleToPrev(true)">
+    (click)="clickable && cycleToPrev()"
+    fxHide.lt-md>
     <md-icon class="icon-left" fontSet="fa"
-      fontIcon="fa-arrow-circle-o-left"
+      [fontIcon]="icons.left"
       aria-hidden="true"></md-icon>
   </div>
   <ol fxLayout="row"
-    fxLayoutAlign="center center">
+    fxLayoutAlign="center center"
+    fxHide.lt-md>
     <li *ngFor="let slide of slides"
       [ngClass]="isActiveSlide(slide) ? 'active' : ''"
       (click)="clickable && cycleToSelected(getIdxBySlide(slide), false)">
     </li>
   </ol>
   <div class="icon-container"
-    (click)="clickable && cycleToNext()">
+    (click)="clickable && cycleToNext()"
+    fxHide.lt-md>
     <md-icon class="icon-right" fontSet="fa"
-      fontIcon="fa-arrow-circle-o-right"
+      [fontIcon]="icons.right"
       aria-hidden="true"></md-icon>
   </div>
   <app-carousel *ngFor="let slide of slides"
     (clickable)="changeClickable($event)"
-    [ngStyle.lt-md]="{height: '100px'}"
+    (panLeft)="clickable && onPanLeft($event)"
+    (panRight)="clickable && onPanRight($event)"
     [slide]="slide"></app-carousel>
 </div>

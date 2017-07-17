@@ -3,9 +3,9 @@ import {
   OnInit,
   OnDestroy
 } from '@angular/core';
-import { Slide } from "../../models/slide.type";
-import { carouselState } from "../../models/carousel.state";
-import { SlidesService } from "../../services/slides.service";
+import { Slide } from '../../models/slide.type';
+import { carouselState } from '../../models/carousel.state';
+import { SlidesService } from '../../services/slides.service';
 
 @Component({
   selector: 'app-carousel-container',
@@ -21,19 +21,24 @@ export class CarouselContainerComponent implements OnInit, OnDestroy {
   clickable: boolean;
   // interval handle
   slideInterval;
+  MD_SCREEN_WIDTH: 960;
+  icons: {
+    left: string;
+    right: string;
+  }
   constructor(private slidesService: SlidesService) { }
 
   ngOnInit() {
-    this.interval = 2000;
+    this.interval = 5000;
     this.clickable = true;
+    this.icons = {
+      left: 'fa-arrow-circle-o-left',
+      right: 'fa-arrow-circle-o-right'
+    }
     this.slidesService.getAllSlides()
       .then(slides => {
         this.slides = slides;
         this.cycle();
-        // this.activeSlide = this.slides[0];
-        // setTimeout(() => {
-          // this.stopTimer();
-        // }, 500);
       })
       .catch(err => console.log(err));
   }
@@ -79,6 +84,18 @@ export class CarouselContainerComponent implements OnInit, OnDestroy {
 
   pause() {
     this.stopTimer();
+  }
+
+  onPanLeft($event) {
+    if (innerWidth < this.MD_SCREEN_WIDTH) {
+      this.cycleToNext();
+    }
+  }
+
+  onPanRight($event) {
+    if (innerWidth < this.MD_SCREEN_WIDTH) {
+      this.cycleToPrev();
+    }
   }
 
   private restartTimer() {
@@ -151,7 +168,7 @@ export class CarouselContainerComponent implements OnInit, OnDestroy {
   }
 
   private getActiveSlideState(nextState, isCycle?: boolean) {
-    switch(nextState) {
+    switch (nextState) {
       case carouselState.left:
         return carouselState.right;
       case carouselState.center:
