@@ -3,8 +3,8 @@ import { InMemoryDbService } from 'angular-in-memory-web-api';
 import { UuidService } from '../utils/uuid/uuid.service';
 import { ProjectInfo } from '../models/project-info.type';
 import { BlogPost } from '../models/blog-post.type';
-import { carouselState } from "../models/carousel.state";
-import { Slide } from "../models/slide.type";
+import { carouselState } from '../models/carousel.state';
+import { Slide } from '../models/slide.type';
 import { blog1 } from './mock-data/mock-blog1';
 import { blog2 } from './mock-data/mock-blog2';
 import { blog3 } from './mock-data/mock-blog3';
@@ -87,7 +87,7 @@ export class InMemoryDataService implements InMemoryDbService {
         name: 'JS Calculator',
         date: new Date(2015, 12, 28).getTime(),
         thumbnail: '../../assets/imgs/project3.jpg',
-        description: 'A simple calculator powered by JS.',
+        description: 'A simple calculator with jQuery.',
         link: 'https://nikaple.github.io/javascript-calculator',
       }
     ];

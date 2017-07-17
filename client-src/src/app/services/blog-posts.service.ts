@@ -2,31 +2,47 @@ import { Injectable } from '@angular/core';
 import { BlogPost } from '../models/blog-post.type';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
-import { retrieveSessionStorage } from "../utils/retrieveSessionStorage";
+import 'rxjs/add/operator/map';
+import { retrieveSessionStorage } from '../utils/retrieveSessionStorage';
+import { HOST } from '../utils/host';
+
+interface AdjacentPosts {
+  prev: BlogPost | null;
+  cur: BlogPost;
+  next: BlogPost | null;
+}
 
 @Injectable()
 export class BlogPostsService {
-
+  endPoint = 'blogposts';
+  storageKey = 'blog-posts';
   constructor(private http: Http) { }
 
+  // InMemoryWebAPI
+  // getAllBlogPosts(): Promise<BlogPost[]> {
+  //   const post$ = this.http.get('api/blogposts').toPromise();
+  //   return retrieveSessionStorage('blog-posts', post$);
+  // }
+
+  // Real world data
   getAllBlogPosts(): Promise<BlogPost[]> {
-    const post$ = this.http.get('api/blogposts').toPromise();
-    return retrieveSessionStorage('blog-posts', post$);
+    const post$ = this.http.get(HOST + this.endPoint)
+      .map((res: any) => {
+        return JSON.parse(res._body);
+      })
+      .toPromise();
+    return retrieveSessionStorage(this.storageKey, post$);
   }
 
   getBlogPostById(id): Promise<BlogPost> {
     return this.getAllBlogPosts()
-    .then(posts => {
-      return posts.filter(post => id === post.id)[0] as BlogPost;
-    })
-    .catch(err => console.log(err));
+      .then(posts => {
+        return posts.filter(post => id === post.id)[0];
+      })
+      .catch(err => console.log(err)) as Promise<BlogPost>;
   }
 
-  getAdjacentBlogPosts(id): Promise<{
-    prev: BlogPost;
-    cur: BlogPost;
-    next: BlogPost;
-  }> {
+  getAdjacentBlogPosts(id): Promise<AdjacentPosts> {
     return this.getAllBlogPosts()
     .then(posts => {
       const index = posts.findIndex(post => id === post.id);
@@ -36,24 +52,24 @@ export class BlogPostsService {
         next: posts[index + 1]
       };
     })
-    .catch(err => console.log(err));
+    .catch(err => console.log(err)) as Promise<AdjacentPosts>;
   }
 
-  getNextBlogPost(id): Promise<BlogPost> {
+  getNextBlogPost(id): Promise<BlogPost | null> {
     return this.getAllBlogPosts()
     .then(posts => {
       const index = posts.findIndex(post => id === post.id);
       return posts[index + 1];
     })
-    .catch(err => console.log(err));
+    .catch(err => console.log(err)) as Promise<BlogPost | null>;
   }
 
-  getPrevBlogPost(id): Promise<BlogPost> {
+  getPrevBlogPost(id): Promise<BlogPost | null> {
     return this.getAllBlogPosts()
     .then(posts => {
       const index = posts.findIndex(post => id === post.id);
-      return posts[index - 1];
+      return posts[index - 1] || null;
     })
-    .catch(err => console.log(err));
+    .catch(err => console.log(err)) as Promise<BlogPost | null>;
   }
 }
