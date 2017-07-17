@@ -22,7 +22,4 @@ export class NavComponent implements OnInit {
   ngOnInit() {
     this.navLinks = this.routesSerivce.getRootRoutes();
   }
-
-  onSelect(link: NavLink) {
-  }
 }
