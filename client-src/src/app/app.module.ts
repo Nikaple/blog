@@ -13,6 +13,8 @@ import { InMemoryDataService } from './services/in-memory-data.service';
 
 // external imports
 import { UuidService } from './utils/uuid/uuid.service';
+import 'hammerjs';
+import 'hammer-timejs';
 
 // material imports
 import { MdTabsModule } from '@angular/material';
@@ -73,7 +75,7 @@ import { SidenavComponent } from './sidenav/sidenav.component';
     BrowserModule,
     FlexLayoutModule,
     HttpModule,
-    InMemoryWebApiModule.forRoot(InMemoryDataService),
+    // InMemoryWebApiModule.forRoot(InMemoryDataService),
     BrowserAnimationsModule,
     // material
     MdTabsModule,
