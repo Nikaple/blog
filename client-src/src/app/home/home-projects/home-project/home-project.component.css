@@ -5,6 +5,10 @@ md-card {
   padding-bottom: 0.75rem;
 }
 
+img {
+  cursor: pointer;
+}
+
 md-card-footer {
   position: absolute;
   display: block;

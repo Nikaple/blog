@@ -13,10 +13,11 @@ export class HomeProjectComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+
   }
 
-  onClick($event) {
-    console.log('home-project event: ', $event.target);
+  onClickImage(project) {
+    window.open(project.link);
   }
 
 }
