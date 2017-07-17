@@ -6,7 +6,7 @@ import { MarkdownService } from 'angular2-markdown';
 import { BlogPostsService } from '../../services/blog-posts.service';
 import { BlogPost } from '../../models/blog-post.type';
 
-import { Subscription } from "rxjs/Subscription";
+import { Subscription } from 'rxjs/Subscription';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/take';
 
@@ -36,7 +36,6 @@ export class BlogPostComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.customizeLink();
-    console.log('blog component load');
     this.subscription = this.route.params
       .switchMap((params: Params) => this.blogPostsService.getAdjacentBlogPosts(params.id))
       .subscribe(posts => {
