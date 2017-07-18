@@ -1,3 +1,5 @@
+import { ENV } from './config';
+
 /**
    * initialize the sessionStorage of 'key' using 'prop' property in this class
    * by 'method'
@@ -10,12 +12,9 @@
   export function retrieveSessionStorage(key: string, value: Promise<any>) {
     if (!sessionStorage.getItem(key)) {
       return value.then(response => {
-        // InMemoryWebAPI
-        // const data = response.json().data;
-        // sessionStorage.setItem(key, JSON.stringify(data));
-        // return data;
-        sessionStorage.setItem(key, JSON.stringify(response));
-        return response;
+        const data = ENV === 'dev' ? response.json().data : response;
+        sessionStorage.setItem(key, JSON.stringify(data));
+        return data;
       }).catch(err => console.log(err));
     } else {
       return Promise.resolve(JSON.parse(sessionStorage.getItem(key)));

@@ -37,7 +37,7 @@ export class BlogPostsService {
   getBlogPostById(id): Promise<BlogPost> {
     return this.getAllBlogPosts()
       .then(posts => {
-        return posts.filter(post => id === post.id)[0];
+        return posts.filter(post => id === post._id.$oid)[0];
       })
       .catch(err => console.log(err)) as Promise<BlogPost>;
   }
@@ -45,7 +45,7 @@ export class BlogPostsService {
   getAdjacentBlogPosts(id): Promise<AdjacentPosts> {
     return this.getAllBlogPosts()
     .then(posts => {
-      const index = posts.findIndex(post => id === post.id);
+      const index = posts.findIndex(post => id === post._id.$oid);
       return {
         prev: posts[index - 1],
         cur: posts[index],
@@ -58,7 +58,7 @@ export class BlogPostsService {
   getNextBlogPost(id): Promise<BlogPost | null> {
     return this.getAllBlogPosts()
     .then(posts => {
-      const index = posts.findIndex(post => id === post.id);
+      const index = posts.findIndex(post => id === post._id.$oid);
       return posts[index + 1];
     })
     .catch(err => console.log(err)) as Promise<BlogPost | null>;
@@ -67,9 +67,13 @@ export class BlogPostsService {
   getPrevBlogPost(id): Promise<BlogPost | null> {
     return this.getAllBlogPosts()
     .then(posts => {
-      const index = posts.findIndex(post => id === post.id);
+      const index = posts.findIndex(post => id === post._id.$oid);
       return posts[index - 1] || null;
     })
     .catch(err => console.log(err)) as Promise<BlogPost | null>;
+  }
+
+  private splitBlogData(blog: string) {
+    const head = blog.match(/#+.+\n/);
   }
 }

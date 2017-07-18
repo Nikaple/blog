@@ -33,28 +33,28 @@ export class InMemoryDataService implements InMemoryDbService {
   getMockHomeSlides(): Slide[] {
     const slides: Slide[] = [
       {
-        url: '../../../assets/imgs/carousel1.jpg',
-        alt: 'example1',
+        _id: {
+          "$oid": "596c7164f36d281eb440bd3b"
+        },
+        index: 0,
+        url: "http://ot8662avo.bkt.clouddn.com/17-7-17/52243338.jpg",
+        alt: "Post Spectra"
       },
       {
-        url: '../../../assets/imgs/example2.png',
-        alt: 'example2',
+        _id: {
+          "$oid": "596c7164f36d281eb123bd3b"
+        },
+        index: 1,
+        url: "http://ot8662avo.bkt.clouddn.com/17-7-17/47826487.jpg",
+        alt: "3D Barrage Designer"
       },
       {
-        url: '../../../assets/imgs/example3.png',
-        alt: 'example3'
-      },
-      {
-        url: '../../../assets/imgs/example4.png',
-        alt: 'example4'
-      },
-      {
-        url: '../../../assets/imgs/example5.png',
-        alt: 'example5'
-      },
-      {
-        url: '../../../assets/imgs/example6.png',
-        alt: 'example6'
+        _id: {
+          "$oid": "596c7164f123481eb440bd3b"
+        },
+        index: 2,
+        url: "http://ot8662avo.bkt.clouddn.com/17-7-17/23047688.jpg",
+        alt: "JavaScript Calculator"
       }
     ];
     return slides.map((slide, index) => {
@@ -67,26 +67,32 @@ export class InMemoryDataService implements InMemoryDbService {
   getMockHomeProjects(): ProjectInfo[] {
     return [
       {
-        id: this.uuidService.generate(),
+        _id: {
+          "$oid": "596c5554f36d281eb440bd3b"
+        },
         name: 'Post Spectra',
         date: new Date(2017, 4, 10).getTime(),
-        thumbnail: '../../assets/imgs/project1.jpg',
+        thumbnail: 'http://ot8662avo.bkt.clouddn.com/17-7-17/19546583.jpg',
         description: 'Produce your SI easier.',
         link: 'https://nikaple.github.io/',
       },
       {
-        id: this.uuidService.generate(),
+        _id: {
+          "$oid": "59612345f36d281eb440bd3b"
+        },
         name: '3D Barrage Designer',
         date: new Date(2016, 2, 15).getTime(),
-        thumbnail: '../../assets/imgs/project2.jpg',
-        description: 'Design your own 3d barrages!',
-        link: 'https://nikaple.github.io/3d-barrage-designer'
+        thumbnail: "http://ot8662avo.bkt.clouddn.com/17-7-17/10940537.jpg",
+        description: "Produce your SI easier.",
+        link: "https://nikaple.github.io/"
       },
       {
-        id: this.uuidService.generate(),
+        _id: {
+          "$oid": "596c7164f36d281eb443213b"
+        },
         name: 'JS Calculator',
         date: new Date(2015, 12, 28).getTime(),
-        thumbnail: '../../assets/imgs/project3.jpg',
+        thumbnail: 'http://ot8662avo.bkt.clouddn.com/17-7-17/36645280.jpg',
         description: 'A simple calculator with jQuery.',
         link: 'https://nikaple.github.io/javascript-calculator',
       }
@@ -96,49 +102,65 @@ export class InMemoryDataService implements InMemoryDbService {
   getMockBlogPosts(): BlogPost[] {
     return [
       {
-        id: this.uuidService.generate(),
+        _id: {
+          "$oid": "596c7164f36d221eb440bd3b"
+        },
         title: 'Linux环境搭建 —— Vagrant与VirtualBox的配置',
         date: new Date(2017, 4, 5).getTime(),
         content: blog1
       },
       {
-        id: this.uuidService.generate(),
+        _id: {
+          "$oid": "196c7164f36d281eb440bd3b"
+        },
         title: 'Linux下的用户管理 —— 查看、添加用户',
         date: new Date(2017, 2, 16).getTime(),
         content: blog2
       },
       {
-        id: this.uuidService.generate(),
+        _id: {
+          "$oid": "596c7164f36d281eb440bdfb"
+        },
         title: 'markdown语法测试',
         date: new Date(2017, 1, 16).getTime(),
         content: blog3
       },
       {
-        id: this.uuidService.generate(),
+        _id: {
+          "$oid": "596c7164f36d2d1eb440bd3b"
+        },
         title: '设计模式的超简化描述！',
         date: new Date(2017, 1, 16).getTime(),
         content: blog4
       },
       {
-        id: this.uuidService.generate(),
+        _id: {
+          "$oid": "596c7164fc6d281eb440bd3b"
+        },
         title: 'HTML 部分问题与解答',
         date: new Date(2017, 1, 16).getTime(),
         content: blog5
       },
       {
-        id: this.uuidService.generate(),
+        _id: {
+          "$oid": "596c7b64f36d281eb440bd3b"
+        },
         title: 'FEX 面试问题',
         date: new Date(2017, 1, 16).getTime(),
         content: blog6
       },
       {
-        id: this.uuidService.generate(),
+        _id: {
+          "$oid": "596a7164f36d281eb440bd3b"
+        },
         title: '前端工作面试常见问题',
         date: new Date(2017, 1, 16).getTime(),
         content: blog7
       },
       {
-        id: this.uuidService.generate(),
+        _id: {
+          "$oid": "596c7164fabcd81eb440bd3b"
+        },
         title: '前端工作面试HTML相关问题',
         date: new Date(2017, 1, 16).getTime(),
         content: blog8
