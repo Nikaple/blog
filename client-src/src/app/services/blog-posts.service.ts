@@ -4,7 +4,7 @@ import { Http } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/map';
 import { retrieveSessionStorage } from '../utils/retrieveSessionStorage';
-import { HOST } from '../utils/host';
+import { HOST, ENV } from '../utils/config';
 
 interface AdjacentPosts {
   prev: BlogPost | null;
@@ -18,20 +18,20 @@ export class BlogPostsService {
   storageKey = 'blog-posts';
   constructor(private http: Http) { }
 
-  // InMemoryWebAPI
-  // getAllBlogPosts(): Promise<BlogPost[]> {
-  //   const post$ = this.http.get('api/blogposts').toPromise();
-  //   return retrieveSessionStorage('blog-posts', post$);
-  // }
-
-  // Real world data
   getAllBlogPosts(): Promise<BlogPost[]> {
-    const post$ = this.http.get(HOST + this.endPoint)
-      .map((res: any) => {
-        return JSON.parse(res._body);
-      })
-      .toPromise();
-    return retrieveSessionStorage(this.storageKey, post$);
+    if (ENV === 'dev') {
+      // In memory web API
+      const post$ = this.http.get('api/blogposts').toPromise();
+      return retrieveSessionStorage('blog-posts', post$);
+    } else {
+      // Server API
+      const post$ = this.http.get(HOST + this.endPoint)
+        .map((res: any) => {
+          return JSON.parse(res._body);
+        })
+        .toPromise();
+      return retrieveSessionStorage(this.storageKey, post$);
+    }
   }
 
   getBlogPostById(id): Promise<BlogPost> {

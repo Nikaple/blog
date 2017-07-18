@@ -75,7 +75,7 @@ import { SidenavComponent } from './sidenav/sidenav.component';
     BrowserModule,
     FlexLayoutModule,
     HttpModule,
-    // InMemoryWebApiModule.forRoot(InMemoryDataService),
+    InMemoryWebApiModule.forRoot(InMemoryDataService),
     BrowserAnimationsModule,
     // material
     MdTabsModule,
