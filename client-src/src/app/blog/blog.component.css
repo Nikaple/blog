@@ -19,3 +19,8 @@ ul {
 md-card {
   cursor: pointer;
 }
+
+p {
+  font-weight: normal;
+  color: #333;
+}

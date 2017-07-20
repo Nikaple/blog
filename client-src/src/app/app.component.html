@@ -3,7 +3,9 @@
   fxLayout="column"
   fxLayoutAlign="space-between space-between"
   [ngStyle]="{'min-height': height + 'px'}">
-  <app-header fxFlex="1"></app-header>
-  <router-outlet></router-outlet>
+  <div class="content-wrapper" fxFlex="1">
+    <app-header ></app-header>
+    <router-outlet></router-outlet>
+  </div>
   <app-footer></app-footer>
 </div>
