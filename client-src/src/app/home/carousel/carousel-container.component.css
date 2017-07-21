@@ -29,8 +29,10 @@ ol {
 }
 
 li {
-  height: 1.25rem;
-  background: linear-gradient(transparent 40%, rgba(255,255,255,0.6) 40%, rgba(255,255,255,0.6) 55%, transparent 0);
+  height: 0.25rem;
+  background: rgba(255,255,255,0.6);
+  background-position: 0 0, 2rem 0;
+  background-repeat: no-repeat;
   width: 2rem;
   position: relative;
   list-style: none;
@@ -39,8 +41,17 @@ li {
   transition: all 1s ease;
 }
 
+li::before {
+  content: '';
+  position: absolute;
+  top: -0.5rem;
+  left: 0;
+  width: 2rem;
+  height: 1.25rem;
+}
+
 li.active {
-  border-color: rgba(255,255,255,1);
+  background: white;
 }
 
 div.icon-container {
