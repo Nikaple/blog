@@ -24,8 +24,9 @@ function setHeaders(res) {
 
 // slides
 router.get('/slides', (req, res, next) => {
-  setHeaders(res);
+  // setHeaders(res);
   console.log('GET request SLIDES');
+    console.log(slide);
   const slides = slide.find({}, (err, doc) => {
     if (!err) {
       console.log(doc);
