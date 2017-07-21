@@ -38,6 +38,7 @@ export class BlogPostComponent implements OnInit, OnDestroy {
     this.customizeLink();
     this.subscription = this.route.params
       .switchMap((params: Params) => this.blogPostsService.getAdjacentBlogPosts(params.id))
+      .debounceTime(1000)
       .subscribe(posts => {
         this.posts = posts;
         this.post = posts.cur;

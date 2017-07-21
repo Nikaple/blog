@@ -11,9 +11,9 @@
       fxLayoutAlign="space-between">
     <button md-raised-button (click)="onPrevPost()"
       [disabled]="!prevBlogExists"
-      [fxHide]="!!post">Previous Blog</button>
+      [fxShow]="!!post">Previous Blog</button>
     <button md-raised-button (click)="onNextPost()"
       [disabled]="!nextBlogExists"
-      [fxHide]="!!post">Next Blog</button>
+      [fxShow]="!!post">Next Blog</button>
   </div>
 </div>
