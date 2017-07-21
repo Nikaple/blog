@@ -8,6 +8,7 @@ import { BlogPost } from '../../models/blog-post.type';
 
 import { Subscription } from 'rxjs/Subscription';
 import 'rxjs/add/operator/switchMap';
+import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/take';
 
 @Component({
