@@ -25,11 +25,12 @@ ol {
   left: 50%;
   transform: translateX(-50%);
   z-index: 1;
-  bottom: 1rem;
+  bottom: 0.5rem;
 }
 
 li {
-  border-top: 0.25rem solid rgba(255,255,255,0.6);
+  height: 1.25rem;
+  background: linear-gradient(transparent 40%, rgba(255,255,255,0.6) 40%, rgba(255,255,255,0.6) 55%, transparent 0);
   width: 2rem;
   position: relative;
   list-style: none;
