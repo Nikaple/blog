@@ -18,6 +18,12 @@ export class BlogComponent implements OnInit {
 
   ngOnInit() {
     this.blogPostsService.getAllBlogPosts().then(posts => {
+      const extractedPosts = posts.map((blogpost: BlogPost) => {
+        const { title, description } = this.blogPostsService.splitBlogData(blogpost.content);
+        blogpost.title = title;
+        blogpost.description = description;
+        return blogpost;
+      })
       this.blogPosts = posts;
     });
   }

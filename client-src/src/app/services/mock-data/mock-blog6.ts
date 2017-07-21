@@ -1,6 +1,6 @@
 /* tslint:disable:max-line-length */
 
-export const blog6 = `# 以下是来自 [FEX 面试问题](https://github.com/fex-team/interview-questions)
+export const blog6 = `## FEX 面试问题
 
 ## 我们喜欢问的问题
 

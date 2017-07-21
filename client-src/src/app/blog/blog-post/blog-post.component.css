@@ -20,6 +20,10 @@ md-progress-spinner {
   height: 3rem;
 }
 
+markdown {
+  max-width: 100%;
+}
+
 @media screen and (max-width: 599px) {
   div.container {
     width: 90%;

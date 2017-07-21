@@ -20,11 +20,5 @@ export class AppComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.height = innerHeight;
-    Observable.fromEvent(window, 'resize')
-      .throttleTime(100)
-      .subscribe((e) => {
-        this.height = innerHeight;
-      });
   }
 }

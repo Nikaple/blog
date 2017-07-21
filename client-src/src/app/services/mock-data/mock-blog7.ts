@@ -1,13 +1,13 @@
 /* tslint:disable:max-line-length */
 
-export const blog7 = `## [前端工作面试常见问题](https://github.com/darcyclarke/Front-end-Developer-Interview-Questions#general)
+export const blog7 = `## 前端工作面试常见问题
 
 **备注**: [Rebecca Murphey](http://rmurphey.com/) 的 [Baseline For Front-End Developers](http://rmurphey.com/blog/2012/04/12/a-baseline-for-front-end-developers/) 是你在准备面试前应该阅读的绝佳资源。
 
 
 **记住：** 很多问题都是开放的，可以引发有趣的讨论。这比直接的答案更能体现此人的能力。
 
-###常见问题：
+### 常见问题：
 
 * Q: 你在昨天/本周学到了什么？
 

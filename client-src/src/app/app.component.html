@@ -1,11 +1,12 @@
 <app-sidenav fxHide.gt-xs></app-sidenav>
 <div class="wrapper"
   fxLayout="column"
-  fxLayoutAlign="space-between space-between"
-  [ngStyle]="{'min-height': height + 'px'}">
-  <div class="content-wrapper" fxFlex="1">
-    <app-header ></app-header>
-    <router-outlet></router-outlet>
+  fxLayoutAlign="space-between stretch">
+  <div class="content-wrapper"
+    fxFlex="1"
+    fxLayout="column">
+    <app-header></app-header>
+     <router-outlet></router-outlet>
   </div>
   <app-footer></app-footer>
 </div>

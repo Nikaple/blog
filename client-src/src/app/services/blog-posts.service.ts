@@ -5,6 +5,7 @@ import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/map';
 import { retrieveSessionStorage } from '../utils/retrieveSessionStorage';
 import { HOST, ENV } from '../utils/config';
+import { MarkdownService } from 'angular2-markdown';
 
 interface AdjacentPosts {
   prev: BlogPost | null;
@@ -16,7 +17,7 @@ interface AdjacentPosts {
 export class BlogPostsService {
   endPoint = 'blogposts';
   storageKey = 'blog-posts';
-  constructor(private http: Http) { }
+  constructor(private http: Http, private markdownService: MarkdownService) { }
 
   getAllBlogPosts(): Promise<BlogPost[]> {
     if (ENV === 'dev') {
@@ -55,25 +56,32 @@ export class BlogPostsService {
     .catch(err => console.log(err)) as Promise<AdjacentPosts>;
   }
 
-  getNextBlogPost(id): Promise<BlogPost | null> {
+  getNextBlogPost(id): Promise<BlogPost|void> {
     return this.getAllBlogPosts()
     .then(posts => {
       const index = posts.findIndex(post => id === post._id.$oid);
       return posts[index + 1];
     })
-    .catch(err => console.log(err)) as Promise<BlogPost | null>;
+    .catch(err => console.log(err));
   }
 
-  getPrevBlogPost(id): Promise<BlogPost | null> {
+  getPrevBlogPost(id): Promise<BlogPost|void> {
     return this.getAllBlogPosts()
     .then(posts => {
       const index = posts.findIndex(post => id === post._id.$oid);
       return posts[index - 1] || null;
     })
-    .catch(err => console.log(err)) as Promise<BlogPost | null>;
+    .catch(err => console.log(err));
   }
 
-  private splitBlogData(blog: string) {
-    const head = blog.match(/#+.+\n/);
+  splitBlogData(blog: string) {
+    const titleMatch = blog.match(/#+.+\n/);
+    // head should only contain # markups
+    const title = titleMatch[0].replace(/#+/, '');
+    const bodyMarked = blog.substring(titleMatch.index, blog.length - 1);
+    const bodyHTML = this.markdownService.compile(bodyMarked);
+    const removeReg = /<[\s\S]+?>/g;
+    const description = bodyHTML.replace(removeReg, '');
+    return { title, description };
   }
 }
