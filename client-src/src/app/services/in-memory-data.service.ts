@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { InMemoryDbService } from 'angular-in-memory-web-api';
-import { UuidService } from '../utils/uuid/uuid.service';
 import { ProjectInfo } from '../models/project-info.type';
 import { BlogPost } from '../models/blog-post.type';
 import { carouselState } from '../models/carousel.state';
@@ -20,7 +19,7 @@ export class InMemoryDataService implements InMemoryDbService {
   projects: ProjectInfo[];
   slides: Slide[];
 
-  constructor(private uuidService: UuidService) {}
+  constructor() {}
 
   createDb() {
     return {
@@ -83,8 +82,8 @@ export class InMemoryDataService implements InMemoryDbService {
         name: '3D Barrage Designer',
         date: new Date(2016, 2, 15).getTime(),
         thumbnail: "http://ot8662avo.bkt.clouddn.com/17-7-17/10940537.jpg",
-        description: "Produce your SI easier.",
-        link: "https://nikaple.github.io/"
+        description: "Design your own 3d barrages!",
+        link: "https://nikaple.github.io/3d-barrage-designer"
       },
       {
         _id: {
@@ -105,7 +104,6 @@ export class InMemoryDataService implements InMemoryDbService {
         _id: {
           "$oid": "596c7164f36d221eb440bd3b"
         },
-        title: 'Linux环境搭建 —— Vagrant与VirtualBox的配置',
         date: new Date(2017, 4, 5).getTime(),
         content: blog1
       },
@@ -113,7 +111,6 @@ export class InMemoryDataService implements InMemoryDbService {
         _id: {
           "$oid": "196c7164f36d281eb440bd3b"
         },
-        title: 'Linux下的用户管理 —— 查看、添加用户',
         date: new Date(2017, 2, 16).getTime(),
         content: blog2
       },
@@ -121,7 +118,6 @@ export class InMemoryDataService implements InMemoryDbService {
         _id: {
           "$oid": "596c7164f36d281eb440bdfb"
         },
-        title: 'markdown语法测试',
         date: new Date(2017, 1, 16).getTime(),
         content: blog3
       },
@@ -129,7 +125,6 @@ export class InMemoryDataService implements InMemoryDbService {
         _id: {
           "$oid": "596c7164f36d2d1eb440bd3b"
         },
-        title: '设计模式的超简化描述！',
         date: new Date(2017, 1, 16).getTime(),
         content: blog4
       },
@@ -137,7 +132,6 @@ export class InMemoryDataService implements InMemoryDbService {
         _id: {
           "$oid": "596c7164fc6d281eb440bd3b"
         },
-        title: 'HTML 部分问题与解答',
         date: new Date(2017, 1, 16).getTime(),
         content: blog5
       },
@@ -145,7 +139,6 @@ export class InMemoryDataService implements InMemoryDbService {
         _id: {
           "$oid": "596c7b64f36d281eb440bd3b"
         },
-        title: 'FEX 面试问题',
         date: new Date(2017, 1, 16).getTime(),
         content: blog6
       },
@@ -153,7 +146,6 @@ export class InMemoryDataService implements InMemoryDbService {
         _id: {
           "$oid": "596a7164f36d281eb440bd3b"
         },
-        title: '前端工作面试常见问题',
         date: new Date(2017, 1, 16).getTime(),
         content: blog7
       },
@@ -161,7 +153,6 @@ export class InMemoryDataService implements InMemoryDbService {
         _id: {
           "$oid": "596c7164fabcd81eb440bd3b"
         },
-        title: '前端工作面试HTML相关问题',
         date: new Date(2017, 1, 16).getTime(),
         content: blog8
       }

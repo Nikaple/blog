@@ -7,16 +7,25 @@
     <h2>MEAN STACK</h2>
   </div>
   <div class="dep-container"
-    fxLayout="row"
-    fxLayoutAlign="space-around space-around">
+    fxLayout.xs="column"
+    fxLayoutAlign.xs="space-around center"
+    fxLayout.gt-xs="row"
+    fxLayoutAlign.gt-xs="space-around space-around">
     <div class="container"
-      fxLayout="column"
-      fxLayoutAlign="flex-start center"
+      fxLayout.gt-xs="column"
+      fxLayout.xs="row"
+      fxLayoutAlign.gt-xs="flex-start center"
+      fxLayoutAlign.xs="flex-start center"
       *ngFor="let dep of deps">
       <img [src]="dep.img" alt="dep.description" (click)="onClickImg(dep)">
-      <h3>{{dep.name}}</h3>
-      <p>{{dep.description}}</p>
+      <div class="sm-only"
+        fxLayout="column"
+        fxLayoutAlign.gt-xs="space-around center"
+        fxLayoutAlign.xs="space-around space-around">
+        <h3>{{dep.name}}</h3>
+        <p>{{dep.description}}</p>
+      </div>
     </div>
   </div>
 </main>
-<p>Original image from: <a href="http://codecondo.com/7-good-reasons-to-use-mean-stack-in-your-next-web-project/">http://codecondo.com/7-good-reasons-to-use-mean-stack-in-your-next-web-project/</a></p>
+<p class="main-footer">Original image from: <a href="http://codecondo.com/7-good-reasons-to-use-mean-stack-in-your-next-web-project/">http://codecondo.com/7-good-reasons-to-use-mean-stack-in-your-next-web-project/</a></p>

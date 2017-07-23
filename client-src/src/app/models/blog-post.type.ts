@@ -2,8 +2,8 @@ export interface BlogPost {
   _id: {
     $oid: string;
   }
-  title: string,
   date: number,
+  title?: string,
   thumbnail?: string,
   content: string,
   description?: string

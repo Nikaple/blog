@@ -62,11 +62,15 @@ div.container {
 }
 
 div.container > img {
+  position: relative;
   margin: 1rem auto;
   cursor: pointer;
+  border-radius: 50%;
+  border: 2px solid white;
+  filter: drop-shadow(3px 3px 4px black);
 }
 
-div.container > h3 {
+div.container h3 {
   font-size: 1.5rem;
   font-weight: normal;
   color: #ccc;
@@ -77,10 +81,52 @@ h3::first-letter {
   text-shadow: 2px 2px 3px black;
 }
 
-div.container > p {
+div.container p {
   font-size: 0.875rem;
   color: white;
   text-align: center;
   margin: 1rem 0.5rem;
 }
 
+@media screen and (max-width: 599px) {
+  h1 {
+    margin-top: 3rem;
+    font-size: 2rem;
+  }
+  .mean-stack > h2 {
+    font-size: 2rem;
+    border-bottom: none;
+    margin-bottom: 0.5rem;
+  }
+  main.about {
+     height: initial;
+  }
+  div.container {
+     width: 90%;
+     height: 8rem;
+     margin: 0.5rem auto;
+     padding: 1rem;
+     padding-left: 1rem;
+  }
+  div.container img {
+     width: auto;
+     height: 90%;
+  }
+  div.container p {
+    text-align: initial;
+    margin: 0;
+  }
+  .main-footer {
+    margin-bottom: 2rem;
+  }
+  div.sm-only {
+    flex: 1;
+    width: 50%;
+    min-height: 60%;
+    padding-right: 0.5rem;
+    padding-left: 1rem;
+  }
+  div.sm-only h3 {
+    font-size: 1.2rem;
+  }
+}

@@ -5,9 +5,9 @@
   fxLayoutGap.xs="0"
   fxLayoutWrap>
   <div *ngFor="let project of projects"
-    fxFlex.gt-md="calc(33%)"
-    fxFlex.md="calc(50%)"
-    fxFlex.sm="calc(50%)"
+    fxFlex.gt-md="calc(33%-3rem)"
+    fxFlex.md="calc(50%-3rem)"
+    fxFlex.sm="calc(50%-3rem)"
     class="project-container">
     <app-home-project
       [project]="project"

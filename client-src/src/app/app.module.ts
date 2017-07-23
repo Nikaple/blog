@@ -12,7 +12,6 @@ import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './services/in-memory-data.service';
 
 // external imports
-import { UuidService } from './utils/uuid/uuid.service';
 import 'hammerjs';
 import 'hammer-timejs';
 
@@ -23,29 +22,35 @@ import { MdButtonModule } from '@angular/material';
 import { MdCardModule } from '@angular/material';
 import { MdSidenavModule } from '@angular/material';
 
-// component imports
+// module imports
 import { BlogModule } from './blog/blog.module';
+// component imports
 import { AppComponent } from './app.component';
+// 1st-grade imports
+import { HomeComponent } from './home/home.component';
 import { BlogComponent } from './blog/blog.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ProjectComponent } from './project/project.component';
 import { AboutComponent } from './about/about.component';
-import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
+import { SidenavComponent } from './sidenav/sidenav.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+// header sub-components
 import { NavComponent } from './header/nav/nav.component';
+// home sub-components
 import { CarouselContainerComponent } from './home/carousel/carousel-container.component';
 import { CarouselComponent } from './home/carousel/carousel/carousel.component';
+import { HomeBlogsComponent } from './home/home-blogs/home-blogs.component';
 import { HomeProjectsComponent } from './home/home-projects/home-projects.component';
-import { FooterComponent } from './footer/footer.component';
 import { HomeProjectComponent } from './home/home-projects/home-project/home-project.component';
+// blog sub-components
 import { BlogPostComponent } from './blog/blog-post/blog-post.component';
-import { NotFoundComponent } from './not-found/not-found.component';
 
 import { BlogPostsService } from './services/blog-posts.service';
 import { ProjectsService } from './services/projects.service';
 import { RoutesService } from './services/routes.service';
 import { SlidesService } from './services/slides.service';
-import { SidenavComponent } from './sidenav/sidenav.component';
 
 @NgModule({
   declarations: [
@@ -69,7 +74,8 @@ import { SidenavComponent } from './sidenav/sidenav.component';
     FooterComponent,
     // not found
     NotFoundComponent,
-    SidenavComponent
+    SidenavComponent,
+    HomeBlogsComponent
   ],
   imports: [
     BrowserModule,
@@ -91,7 +97,7 @@ import { SidenavComponent } from './sidenav/sidenav.component';
     ProjectsService,
     RoutesService,
     SlidesService,
-    UuidService
+    BlogPostsService
   ],
   bootstrap: [AppComponent]
 })

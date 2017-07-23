@@ -1,0 +1,7 @@
+md-card-content {
+  font-size: 1rem;
+  line-height: 1.5rem;
+  max-height: 4.5rem;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
