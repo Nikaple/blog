@@ -85,3 +85,9 @@ md-icon {
 md-icon::before {
   font-size: 4rem;
 }
+
+@media screen and (max-width: 959px) {
+  .carousel-container {
+    margin: 0 1rem;
+  }
+}

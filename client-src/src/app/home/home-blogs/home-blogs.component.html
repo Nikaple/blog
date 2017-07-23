@@ -1,8 +1,7 @@
 <ul fxLayout="column"
   fxLayoutGap="2rem">
-  <md-card *ngFor="let post of blogPosts"
-    (click)="onSelect(post)">
-    <md-card-title>{{post.title}}</md-card-title>
+  <md-card *ngFor="let post of blogPosts">
+    <md-card-title (click)="onSelect(post)">{{post.title}}</md-card-title>
     <md-card-content [innerHTML]="post.description"></md-card-content>
   </md-card>
 </ul>

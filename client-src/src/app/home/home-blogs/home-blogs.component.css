@@ -5,3 +5,7 @@ md-card-content {
   text-overflow: ellipsis;
   overflow: hidden;
 }
+
+md-card-title {
+  cursor: pointer;
+}
