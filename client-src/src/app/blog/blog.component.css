@@ -7,8 +7,13 @@ h2 {
   border-bottom: 1px solid #eee;
 }
 
-div {
-  width: 60%;
+md-progress-spinner {
+  margin: 0 auto;
+  width: 3rem;
+}
+
+div.container {
+  width: 70%;
   margin: 2rem auto;
 }
 
@@ -24,8 +29,8 @@ md-card {
 
 md-card-content {
   font-size: 1rem;
-  line-height: 1.2rem;
-  max-height: 3.6rem;
+  line-height: 1.5rem;
+  max-height: 4.5rem;
   text-overflow: ellipsis;
   overflow: hidden;
 }
@@ -45,4 +50,18 @@ hr::after {
   top: -0.7em;
   padding: 0 0.5rem;
   background: white;
+}
+
+@media screen and (max-width: 599px) {
+  div.container {
+    width: 90%;
+  }
+  h2 {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 0.5rem;
+  }
+  md-card-title {
+    font-size: 1.2rem;
+  }
 }

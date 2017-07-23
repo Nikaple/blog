@@ -2,13 +2,13 @@ h1 {
   color: rgb(63, 81, 181);
   cursor: pointer;
   display: inline-block;
-  font-family: Roboto,"Helvetica Neue",sans-serif;
+  font-family: "Microsoft Yahei", "微软雅黑", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 0.875rem;
   font-weight: 600;
   height: 3rem;
   line-height: 3rem;
   margin-left: 2rem;
   border: none;
-  padding-top: 0.3rem;
+  padding-bottom: 0;
 }
 

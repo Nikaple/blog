@@ -12,7 +12,7 @@ img {
 md-card-footer {
   position: absolute;
   display: block;
-  bottom: 0.5rem;
+  bottom: 0.4rem;
 }
 
 a {
@@ -44,8 +44,8 @@ a:visited {
 
 @media screen and (max-width: 599px) {
   md-card {
-    width: 16rem;
-    height: 28rem;
+    width: 80%;
+    height: 100%;
   }
 }
 

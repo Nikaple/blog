@@ -4,4 +4,83 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
 }
+
+h1 {
+  color: #555;
+  font-size: 2.5rem;
+  font-weight: normal;
+  font-family: "Open Sans", "Helvetica Neue", Helvetica, "Microsoft Yahei", "\5FAE\8F6F\96C5\9ED1", Arial, sans-serif;
+  margin-bottom: 2rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #eee;
+}
+
+p {
+  margin-top: 1rem;
+  color: #777;
+}
+
+a {
+  text-decoration: none;
+  color: #777;
+}
+
+a:visited {
+  color: #bbb;
+}
+
+main.about {
+  width: 50rem;
+  height: 25rem;
+  background: radial-gradient(rgb(77, 83, 95), rgb(57, 61, 70));
+}
+
+.mean-stack {
+  width: max-content;
+  margin: 0 auto;
+}
+
+div.dep-container {
+  margin-bottom: 1rem;
+}
+
+.mean-stack > h2{
+  margin-top: 1rem;
+  color: white;
+  font-size: 2.5rem;
+}
+
+div.container {
+  color: white;
+  width: 9.375rem;
+  height: 15rem;
+  border-radius: 0.5rem;
+  border: 1px solid hsl(240, 0%, 80%);
+  box-shadow: 3px 3px 4px hsla(0, 0%, 0%, 0.5);
+}
+
+div.container > img {
+  margin: 1rem auto;
+  cursor: pointer;
+}
+
+div.container > h3 {
+  font-size: 1.5rem;
+  font-weight: normal;
+  color: #ccc;
+}
+
+h3::first-letter {
+  color: white;
+  text-shadow: 2px 2px 3px black;
+}
+
+div.container > p {
+  font-size: 0.875rem;
+  color: white;
+  text-align: center;
+  margin: 1rem 0.5rem;
+}
+

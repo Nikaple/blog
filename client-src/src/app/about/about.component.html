@@ -1,1 +1,22 @@
-<img src="http://ot8662avo.bkt.clouddn.com/17-7-21/38705139.jpg" alt="Under Construction">
+<h1>This blog is built with ...</h1>
+<!-- <img src="http://ot8662avo.bkt.clouddn.com/17-7-23/69432392.jpg" alt="The MEAN Stack"> -->
+<main class="about"
+  fxLayout="column"
+  fxLayoutAlign="space-around">
+  <div class="mean-stack">
+    <h2>MEAN STACK</h2>
+  </div>
+  <div class="dep-container"
+    fxLayout="row"
+    fxLayoutAlign="space-around space-around">
+    <div class="container"
+      fxLayout="column"
+      fxLayoutAlign="flex-start center"
+      *ngFor="let dep of deps">
+      <img [src]="dep.img" alt="dep.description" (click)="onClickImg(dep)">
+      <h3>{{dep.name}}</h3>
+      <p>{{dep.description}}</p>
+    </div>
+  </div>
+</main>
+<p>Original image from: <a href="http://codecondo.com/7-good-reasons-to-use-mean-stack-in-your-next-web-project/">http://codecondo.com/7-good-reasons-to-use-mean-stack-in-your-next-web-project/</a></p>

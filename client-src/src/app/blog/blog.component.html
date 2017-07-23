@@ -1,6 +1,7 @@
-<div>
+<div class="container">
   <h2>{{title}}</h2>
-   <ul fxLayout="column"
+  <md-progress-spinner mode="indeterminate" [fxHide]="blogPosts"></md-progress-spinner>
+  <ul fxLayout="column"
     fxLayoutGap="2rem">
     <md-card *ngFor="let post of blogPosts"
       (click)="onSelect(post)">
@@ -9,5 +10,5 @@
       <md-card-content [innerHTML]="post.description"></md-card-content>
     </md-card>
   </ul>
-  <hr>
+  <hr [fxHide]="!blogPosts">
 </div>

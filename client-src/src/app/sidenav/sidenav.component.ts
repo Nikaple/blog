@@ -15,42 +15,42 @@ import { MdSidenav, MdSidenavContainer } from '@angular/material';
     trigger('toggle', [
       state('opened', style({
         'background-color': 'rgba(0, 0, 0, 0.5)',
-        top: 0,
+        transform: 'translateY(0)',
       })),
       state('closed', style({
         'background-color': 'transparent',
-        top: '9999px'
+        transform: 'translateY(9999px)'
       })),
       transition('closed => opened', animate('400ms cubic-bezier(.25,.8,.25,1)', keyframes([
         style({
-          top: '9999px',
+          transform: 'translateY(9999px)',
           'background-color': 'transparent',
           offset: 0
         }),
         style({
-          top: 0,
+          transform: 'translateY(0)',
           'background-color': 'transparent',
           offset: 0.001
         }),
         style({
-          top: 0,
+          transform: 'translateY(0)',
           'background-color': 'rgba(0, 0, 0, 0.5)',
           offset: 1
         }),
       ]))),
       transition('opened => closed', animate('400ms cubic-bezier(.25,.8,.25,1)', keyframes([
         style({
-          top: 0,
+          transform: 'translateY(0)',
           'background-color': 'rgba(0, 0, 0, 0.5)',
           offset: 0
         }),
         style({
-          top: 0,
+          transform: 'translateY(0)',
           'background-color': 'transparent',
           offset: 0.999
         }),
         style({
-          top: '9999px',
+          transform: 'translateY(9999px)',
           'background-color': 'transparent',
           offset: 1
         })

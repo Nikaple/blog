@@ -6,6 +6,7 @@ import {
 import { Slide } from '../../models/slide.type';
 import { carouselState } from '../../models/carousel.state';
 import { SlidesService } from '../../services/slides.service';
+import { MD_TABLET_AND_MOBILE_WIDTH } from '../../utils/config';
 
 @Component({
   selector: 'app-carousel-container',
@@ -21,7 +22,6 @@ export class CarouselContainerComponent implements OnInit, OnDestroy {
   clickable: boolean;
   // interval handle
   slideInterval;
-  MD_SCREEN_WIDTH: 960;
   icons: {
     left: string;
     right: string;
@@ -87,13 +87,13 @@ export class CarouselContainerComponent implements OnInit, OnDestroy {
   }
 
   onPanLeft($event) {
-    if (innerWidth < this.MD_SCREEN_WIDTH) {
+    if (innerWidth < MD_TABLET_AND_MOBILE_WIDTH) {
       this.cycleToNext();
     }
   }
 
   onPanRight($event) {
-    if (innerWidth < this.MD_SCREEN_WIDTH) {
+    if (innerWidth < MD_TABLET_AND_MOBILE_WIDTH) {
       this.cycleToPrev();
     }
   }
