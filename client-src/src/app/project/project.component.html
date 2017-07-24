@@ -1,1 +1,40 @@
-<img src="http://ot8662avo.bkt.clouddn.com/17-7-21/38705139.jpg" alt="Under Construction">
+<main>
+  <h2 md-subheader>Front End Projects</h2>
+  <md-card *ngFor="let frontEndProject of frontEndProjects"
+    fxLayout="column"
+    fxLayoutAlign="flex-start center">
+      <img md-card-image
+        [src]="frontEndProject.fullImage"
+        [alt]="frontEndProject.description"
+        (click)="onClickImage(frontEndProject)">
+      <md-card-title>{{frontEndProject.name}}</md-card-title>
+      <md-card-subtitle>Release date: {{frontEndProject.date | date}}</md-card-subtitle>
+      <md-card-content>
+        <p>Project link:
+          <a [href]="frontEndProject.link">{{frontEndProject.link}}</a>
+        </p>
+        <markdown [data]="frontEndProject?.content" (click)="onClickMarkdown($event)"></markdown>
+      </md-card-content>
+  </md-card>
+
+  <h2 md-subheader>Gamemaker Projects</h2>
+  <md-card *ngFor="let gamemakerProject of gamemakerProjects"
+    fxLayout="column"
+    fxLayoutAlign="flex-start center">
+      <img md-card-image
+        [src]="gamemakerProject.fullImage"
+        [alt]="gamemakerProject.description"
+        (click)="onClickImage(gamemakerProject)">
+      <md-card-title>Game: I Wanna {{gamemakerProject.name}}</md-card-title>
+      <md-card-subtitle>Release date: {{gamemakerProject.date | date}}</md-card-subtitle>
+      <md-card-content>
+        <p>Project link:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <a [href]="gamemakerProject.link">{{gamemakerProject.link}}</a>
+        </p>
+        <p>Video preview:&nbsp;
+          <a [href]="gamemakerProject.link">{{gamemakerProject.previewLink}}</a>
+        </p>
+        <p class="content"></p>
+      </md-card-content>
+  </md-card>
+</main>

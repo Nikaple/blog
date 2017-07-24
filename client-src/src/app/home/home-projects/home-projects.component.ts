@@ -16,7 +16,7 @@ export class HomeProjectsComponent implements OnInit {
 
   ngOnInit() {
     this.projectsService.getAllProjects()
-      .then(projects => this.projects = projects)
+      .then(projects => this.projects = projects.slice(0, 6))
       .catch(err => console.log(err));
   }
 }

@@ -17,10 +17,6 @@ export class RoutesService {
         name: 'blog'
       },
       {
-        path: '/profile',
-        name: 'profile'
-      },
-      {
         path: '/project',
         name: 'project'
       },

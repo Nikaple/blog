@@ -1,8 +1,34 @@
-:host {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
+@import '../blog/blog-post/markdown-theme.css';
+
+main {
+  padding-top: 2rem;
+  width: 80%;
+  margin: 0 auto;
+}
+
+h2 {
+  text-align: center;
+  color: #444;
+}
+
+p {
+  margin: 0.5rem auto;
+}
+
+md-card {
+  width: 100%;
+  margin: 2rem auto;
+}
+
+md-card img {
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+  color: #777;
+}
+
+a:visited {
+  color: #bbb;
 }

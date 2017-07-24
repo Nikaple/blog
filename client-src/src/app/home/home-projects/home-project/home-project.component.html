@@ -1,6 +1,6 @@
 <md-card>
   <img md-card-image [src]="project.thumbnail" [alt]="project.description" (click)="onClickImage(project)">
-  <md-card-title>{{project.name}}</md-card-title>
+  <md-card-title>Game: {{project.name}}</md-card-title>
   <md-card-subtitle>{{project.date | date}}</md-card-subtitle>
   <md-card-content>{{project.description}}</md-card-content>
   <md-card-footer><a [href]="project.link" target="_blank">View more...</a></md-card-footer>

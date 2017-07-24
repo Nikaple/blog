@@ -14,13 +14,16 @@ import { InMemoryDataService } from './services/in-memory-data.service';
 // external imports
 import 'hammerjs';
 import 'hammer-timejs';
+import { MarkdownModule } from 'angular2-markdown';
 
 // material imports
-import { MdTabsModule } from '@angular/material';
-import { MdIconModule } from '@angular/material';
-import { MdButtonModule } from '@angular/material';
-import { MdCardModule } from '@angular/material';
-import { MdSidenavModule } from '@angular/material';
+import {
+  MdTabsModule,
+  MdIconModule,
+  MdButtonModule,
+  MdCardModule,
+  MdSidenavModule
+} from '@angular/material';
 
 // module imports
 import { BlogModule } from './blog/blog.module';
@@ -89,6 +92,8 @@ import { SlidesService } from './services/slides.service';
     MdButtonModule,
     MdCardModule,
     MdSidenavModule,
+    // external
+    MarkdownModule.forRoot(),
     // routing
     BlogModule,
     AppRoutingModule,

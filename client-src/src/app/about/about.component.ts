@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DependencyInfo } from "../models/dependency-info";
+import { DependencyInfo } from '../models/dependency-info';
 
 @Component({
   selector: 'app-about',
@@ -13,7 +13,7 @@ export class AboutComponent implements OnInit {
   ngOnInit() {
     this.deps = [
       {
-        name: "Mongo DB",
+        name: 'Mongo DB',
         img: 'http://ot8662avo.bkt.clouddn.com/17-7-23/50874541.jpg',
         description: 'document-oriented database system',
         link: 'https://www.mongodb.com/'

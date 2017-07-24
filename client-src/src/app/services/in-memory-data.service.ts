@@ -33,27 +33,27 @@ export class InMemoryDataService implements InMemoryDbService {
     const slides: Slide[] = [
       {
         _id: {
-          "$oid": "596c7164f36d281eb440bd3b"
+          '$oid': '596c7164f36d281eb440bd3b'
         },
         index: 0,
-        url: "http://ot8662avo.bkt.clouddn.com/17-7-23/17804569.jpg",
-        alt: "Post Spectra"
+        url: 'http://ot8662avo.bkt.clouddn.com/17-7-23/17804569.jpg',
+        alt: 'Post Spectra'
       },
       {
         _id: {
-          "$oid": "596c7164f36d281eb123bd3b"
+          '$oid': '596c7164f36d281eb123bd3b'
         },
         index: 1,
-        url: "http://ot8662avo.bkt.clouddn.com/17-7-17/47826487.jpg",
-        alt: "3D Barrage Designer"
+        url: 'http://ot8662avo.bkt.clouddn.com/17-7-17/47826487.jpg',
+        alt: '3D Barrage Designer'
       },
       {
         _id: {
-          "$oid": "596c7164f123481eb440bd3b"
+          '$oid': '596c7164f123481eb440bd3b'
         },
         index: 2,
-        url: "http://ot8662avo.bkt.clouddn.com/17-7-23/64000547.jpg",
-        alt: "JavaScript Calculator"
+        url: 'http://ot8662avo.bkt.clouddn.com/17-7-24/59374301.jpg',
+        alt: 'JavaScript Calculator'
       }
     ];
     return slides.map((slide, index) => {
@@ -67,34 +67,91 @@ export class InMemoryDataService implements InMemoryDbService {
     return [
       {
         _id: {
-          "$oid": "596c5554f36d281eb440bd3b"
+          '$oid': '596c5554f36d281eb440bd3b'
         },
         name: 'Post Spectra',
-        date: new Date(2017, 4, 10).getTime(),
+        tabName: 'Post Spectra',
+        date: new Date(2017, 6, 20).getTime(),
         thumbnail: 'http://ot8662avo.bkt.clouddn.com/17-7-17/19546583.jpg',
+        fullImage: 'http://ot8662avo.bkt.clouddn.com/17-7-23/17804569.jpg',
         description: 'Produce your SI easier.',
-        link: 'https://nikaple.github.io/',
+        link: 'https://nikaple.github.io/post-spectra',
+        category: 'front-end',
+        content: '**Post spectra** is a specialized app for writing supporting information for chemistry papers, especially organic chemistry. Preparation of supporting information is always pain in the neck, handling errors and formatting styles are annoying for everyone. With the help of **Post Spectra**, you can format your original data in a rapid **cpp** - **c**opy-**p**aste-**p**aste way, with a standard style of [ACS Style Guide](http://pubs.acs.org/isbn/9780841239999). For more information, please try the [app](https://nikaple.github.io/post-spectra/) or visit the [project description page](https://github.com/Nikaple/post-spectra).',
       },
       {
         _id: {
-          "$oid": "59612345f36d281eb440bd3b"
+          '$oid': '59612345f36d281eb440bd3b'
         },
         name: '3D Barrage Designer',
-        date: new Date(2016, 2, 15).getTime(),
-        thumbnail: "http://ot8662avo.bkt.clouddn.com/17-7-17/10940537.jpg",
-        description: "Design your own 3d barrages!",
-        link: "https://nikaple.github.io/3d-barrage-designer"
+        tabName: 'Barrage Designer',
+        date: new Date(2017, 3, 20).getTime(),
+        thumbnail: 'http://ot8662avo.bkt.clouddn.com/17-7-17/10940537.jpg',
+        fullImage: 'http://ot8662avo.bkt.clouddn.com/17-7-17/47826487.jpg',
+        description: 'Design your own 3d barrages!',
+        link: 'https://nikaple.github.io/3d-barrage-designer/',
+        category: 'front-end',
+        content: '',
       },
       {
         _id: {
-          "$oid": "596c7164f36d281eb443213b"
+          '$oid': '596c7164f36d281eb443213b'
         },
         name: 'JS Calculator',
+        tabName: 'JS-calc',
         date: new Date(2015, 12, 28).getTime(),
         thumbnail: 'http://ot8662avo.bkt.clouddn.com/17-7-17/36645280.jpg',
+        fullImage: 'http://ot8662avo.bkt.clouddn.com/17-7-24/59374301.jpg',
         description: 'A simple calculator with jQuery.',
-        link: 'https://nikaple.github.io/javascript-calculator',
-      }
+        link: 'https://nikaple.github.io/javascript-calculator/',
+        category: 'front-end',
+        content: 'JS Calculator',
+      },
+      {
+        _id: {
+          '$oid': ''
+        },
+        name: 'Enjoy the Music',
+        tabName: 'ETM',
+        date: new Date(2014, 1, 23).getTime(),
+        thumbnail: 'http://ot8662avo.bkt.clouddn.com/17-7-24/36359278.jpg',
+        fullImage: 'http://ot8662avo.bkt.clouddn.com/17-7-24/2879621.jpg',
+        description: 'Independent game. My first avoidance game.',
+        link: 'https://tieba.baidu.com/p/2829824267/',
+        previewLink: 'http://www.bilibili.com/video/av948251/',
+        category: 'gamemaker',
+        content: '',
+      },
+      {
+        _id: {
+          '$oid': ''
+        },
+        name: 'Love the Miku',
+        tabName: 'LTM',
+        date: new Date(2014, 11, 5).getTime(),
+        thumbnail: 'http://ot8662avo.bkt.clouddn.com/17-7-24/66374421.jpg',
+        fullImage: 'http://ot8662avo.bkt.clouddn.com/17-7-24/85507586.jpg',
+        description: 'Cooperated game. Avoidance made by myself.',
+        link: 'https://tieba.baidu.com/p/3392316024/',
+        previewLink: 'http://www.bilibili.com/video/av1817618/',
+        category: 'gamemaker',
+        content: '',
+      },
+      {
+        _id: {
+          '$oid': ''
+        },
+        name: 'Fapple',
+        tabName: 'Fapple',
+        date: new Date(2015, 2, 17).getTime(),
+        thumbnail: 'http://ot8662avo.bkt.clouddn.com/17-7-24/87812479.jpg',
+        fullImage: 'http://ot8662avo.bkt.clouddn.com/17-7-24/40235632.jpg',
+        description: 'Independent game. Story of kid and apples.',
+        link: 'https://tieba.baidu.com/p/3590083294/',
+        previewLink: 'http://www.bilibili.com/video/av4746254/index_4.html',
+        category: 'gamemaker',
+        content: '',
+      },
     ];
   }
 
@@ -102,56 +159,56 @@ export class InMemoryDataService implements InMemoryDbService {
     return [
       {
         _id: {
-          "$oid": "596c7164f36d221eb440bd3b"
+          '$oid': '596c7164f36d221eb440bd3b'
         },
         date: new Date(2017, 4, 5).getTime(),
         content: blog1
       },
       {
         _id: {
-          "$oid": "196c7164f36d281eb440bd3b"
+          '$oid': '196c7164f36d281eb440bd3b'
         },
         date: new Date(2017, 2, 16).getTime(),
         content: blog2
       },
       {
         _id: {
-          "$oid": "596c7164f36d281eb440bdfb"
+          '$oid': '596c7164f36d281eb440bdfb'
         },
         date: new Date(2017, 1, 16).getTime(),
         content: blog3
       },
       {
         _id: {
-          "$oid": "596c7164f36d2d1eb440bd3b"
+          '$oid': '596c7164f36d2d1eb440bd3b'
         },
         date: new Date(2017, 1, 16).getTime(),
         content: blog4
       },
       {
         _id: {
-          "$oid": "596c7164fc6d281eb440bd3b"
+          '$oid': '596c7164fc6d281eb440bd3b'
         },
         date: new Date(2017, 1, 16).getTime(),
         content: blog5
       },
       {
         _id: {
-          "$oid": "596c7b64f36d281eb440bd3b"
+          '$oid': '596c7b64f36d281eb440bd3b'
         },
         date: new Date(2017, 1, 16).getTime(),
         content: blog6
       },
       {
         _id: {
-          "$oid": "596a7164f36d281eb440bd3b"
+          '$oid': '596a7164f36d281eb440bd3b'
         },
         date: new Date(2017, 1, 16).getTime(),
         content: blog7
       },
       {
         _id: {
-          "$oid": "596c7164fabcd81eb440bd3b"
+          '$oid': '596c7164fabcd81eb440bd3b'
         },
         date: new Date(2017, 1, 16).getTime(),
         content: blog8
