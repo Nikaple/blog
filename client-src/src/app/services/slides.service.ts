@@ -13,11 +13,6 @@ export class SlidesService {
 
   constructor(private http: Http) { }
 
-  // InMemoryWebAPI
-  // getAllSlides(): Promise<Slide[]> {
-
-  // }
-
   getAllSlides(): Promise<Slide[]> {
     if (ENV === 'dev') {
       const slides$ = this.http.get(HOST + this.endPoint).toPromise();
@@ -25,7 +20,7 @@ export class SlidesService {
     } else {
       const post$ = this.http.get(HOST + this.endPoint)
         .map((res: any) => {
-          return JSON.parse(res._body);
+          return res._body.data;
         })
         .toPromise();
       return retrieveSessionStorage(this.storageKey, post$);

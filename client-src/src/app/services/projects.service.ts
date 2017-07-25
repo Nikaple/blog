@@ -21,7 +21,7 @@ export class ProjectsService {
     } else {
       const post$ = this.http.get(HOST + this.endPoint)
         .map((res: any) => {
-          return JSON.parse(res._body);
+          return res._body.data;
         })
         .toPromise();
       return retrieveSessionStorage(this.storageKey, post$);

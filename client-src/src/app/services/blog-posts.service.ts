@@ -15,7 +15,7 @@ interface AdjacentPosts {
 
 @Injectable()
 export class BlogPostsService {
-  endPoint = 'blogposts';
+  endPoint = 'blogposts/';
   storageKey = 'blog-posts';
   constructor(private http: Http, private markdownService: MarkdownService) { }
 
@@ -28,7 +28,7 @@ export class BlogPostsService {
       // Server API
       const post$ = this.http.get(HOST + this.endPoint)
         .map((res: any) => {
-          return JSON.parse(res._body);
+          return res._body.data;
         })
         .toPromise();
       return retrieveSessionStorage(this.storageKey, post$);
@@ -36,11 +36,18 @@ export class BlogPostsService {
   }
 
   getBlogPostById(id): Promise<BlogPost> {
-    return this.getAllBlogPosts()
-      .then(posts => {
-        return posts.filter(post => id === post._id.$oid)[0];
-      })
-      .catch(err => console.log(err)) as Promise<BlogPost>;
+    if (ENV === 'dev') {
+      return this.getAllBlogPosts()
+        .then(posts => {
+          return posts.filter(post => id === post._id.$oid)[0];
+        })
+        .catch(err => console.log(err)) as Promise<BlogPost>;
+    } else {
+      // Server API
+      const post$ = this.http.get(HOST + this.endPoint + id)
+        .toPromise().then(res => console.log(res));
+      console.log(post$);
+    }
   }
 
   getAdjacentBlogPosts(id): Promise<AdjacentPosts> {
