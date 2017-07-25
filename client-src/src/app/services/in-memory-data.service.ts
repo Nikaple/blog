@@ -150,7 +150,7 @@ export class InMemoryDataService implements InMemoryDbService {
         link: 'https://tieba.baidu.com/p/3590083294/',
         previewLink: 'http://www.bilibili.com/video/av4746254/index_4.html',
         category: 'gamemaker',
-        content: '**I Wanna Fapple** is an independent adventure game. This boss of game is dedicated to [Touhou](https://en.wikipedia.org/wiki/Touhou_Project) series by ZUN, with various forms of boss battle. The difficulty curve increased sharply at stage 4, so be prepared!',
+        content: '**I Wanna Fapple** is an independent adventure game. The bosses of this game is dedicated to [Touhou](https://en.wikipedia.org/wiki/Touhou_Project) series by ZUN, with various forms of boss battle. The difficulty curve increased sharply at stage 4, so be prepared!',
       },
     ];
   }
