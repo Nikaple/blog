@@ -8,12 +8,13 @@ const SlideSchema = mongoose.Schema({
 const Slide = mongoose.model('slide', SlideSchema);
 
 module.exports = {
-  getAllSlides: async (req, res, next) => {
-    try {
-      const slides = await Slide.find({});
-      res.status(200).jsonp(slides);
-    } catch(err) {
-      next(err);
-    }
+  getAllSlides: (req, res, next) => {
+    Slide.find({}, (err, doc) => {
+      if (err) {
+        console.error(err);
+      } else {
+        res.status(200).jsonp(doc);
+      }
+    });
   }
 };

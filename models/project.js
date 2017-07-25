@@ -15,12 +15,13 @@ const projectSchema = new Schema({
 const Project = mongoose.model('project', projectSchema);
 
 module.exports = {
-  getAllProjects: async (req, res, next) => {
-    try {
-      const projects = await Project.find({});
-      res.status(200).jsonp(projects);
-    } catch(err) {
-      next(err);
-    }
+  getAllProjects: (req, res, next) => {
+    Project.find({}, (err, doc) => {
+      if (err) {
+        console.error(err);
+      } else {
+        res.status(200).jsonp(doc);
+      }
+    });
   }
 };

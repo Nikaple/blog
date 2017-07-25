@@ -9,21 +9,23 @@ const blogpostSchema = new Schema({
 const Blogpost = mongoose.model('blogpost', blogpostSchema);
 
 module.exports = {
-  getAllBlogposts: async (req, res, next) => {
-    try {
-      const posts = await Blogpost.find({});
-      res.status(200).jsonp(posts);
-    } catch(err) {
-      next(err);
-    }
+  getAllBlogposts: (req, res, next) => {
+    Blogpost.find({}, (err, doc) => {
+      if (err) {
+        console.error(err);
+      } else {
+        res.status(200).jsonp(doc);
+      }
+    });
   },
-  getBlogById: async (req, res, next) => {
-    try {
+  getBlogById: (req, res, next) => {
       const { id } = req.params;
-      const post = await Blogpost.findById(id);
-      res.status(200).jsonp(post);
-    } catch(err) {
-      next(err);
-    }
+      Blogpost.findById(id, (err, doc) => {
+        if (err) {
+          console.error(err);
+        } else {
+          res.status(200).jsonp(doc);
+        }
+      });
   }
 }
