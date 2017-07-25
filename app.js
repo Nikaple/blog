@@ -30,6 +30,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 // api router
 app.use('/api', api);
 
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public/index.html'));
+});
+
 app.use(function (err, req, res, next) {
   // treat as 404
   if (err.message
