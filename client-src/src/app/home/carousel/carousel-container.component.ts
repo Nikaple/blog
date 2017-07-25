@@ -68,6 +68,7 @@ export class CarouselContainerComponent implements OnInit, OnDestroy {
   }
 
   cycleToSelected(nextIdx: number, isCycle?: boolean) {
+    this.restartTimer();
     const activeIdx = this.getIdxBySlide(this.activeSlide);
     if (nextIdx === activeIdx) {
       return;
