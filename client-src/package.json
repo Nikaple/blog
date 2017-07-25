@@ -6,9 +6,11 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "prod": "ng build --prod --base-href \"https://nikaple.github.io/blog/\"",
     "test": "ng test",
     "lint": "ng lint --fix --type-check",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "deploy": "ngh --dir \"../public\""
   },
   "private": true,
   "dependencies": {
