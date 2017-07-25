@@ -9,6 +9,13 @@ main {
 h2 {
   text-align: center;
   color: #444;
+  margin-bottom: 0.5rem;
+}
+
+h3 {
+  font-size: 1rem;
+  text-align: center;
+  margin-top: 0;
 }
 
 p {
@@ -27,6 +34,10 @@ md-card img {
 a {
   text-decoration: none;
   color: #777;
+}
+
+a:hover {
+  text-decoration: underline;
 }
 
 a:visited {

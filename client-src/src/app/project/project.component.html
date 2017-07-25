@@ -18,6 +18,7 @@
   </md-card>
 
   <h2 md-subheader>Gamemaker Projects</h2>
+  <h3>For more self-made games, please visit <a href="https://codepen.io/Nikaple/full/vgOpWj/">https://codepen.io/Nikaple/full/vgOpWj/</a></h3>
   <md-card *ngFor="let gamemakerProject of gamemakerProjects"
     fxLayout="column"
     fxLayoutAlign="flex-start center">
@@ -34,7 +35,7 @@
         <p>Video preview:&nbsp;
           <a [href]="gamemakerProject.link">{{gamemakerProject.previewLink}}</a>
         </p>
-        <p class="content"></p>
+        <markdown [data]="gamemakerProject?.content" (click)="onClickMarkdown($event)"></markdown>
       </md-card-content>
   </md-card>
 </main>
