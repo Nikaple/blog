@@ -6,17 +6,24 @@ const blogpostSchema = new Schema({
   content: String
 });
 
-const blogModel = mongoose.model('blogpost', blogpostSchema);
+const Blogpost = mongoose.model('blogpost', blogpostSchema);
 
 module.exports = {
-  getBlogById(id, callback) {
-    blogModel.findById(id, callback);
+  getAllBlogposts: async (req, res, next) => {
+    try {
+      const posts = await Blogpost.find({});
+      res.status(200).jsonp(posts);
+    } catch(err) {
+      next(err);
+    }
   },
-  getAllBlogposts(callback) {
-    // console.log(blogModel.collection);
-    blogModel.find({}, (err, docs) => {
-      if (!err){ 
-      } else {throw err;}
-    });
+  getBlogById: async (req, res, next) => {
+    try {
+      const { id } = req.params;
+      const post = await Blogpost.findById(id);
+      res.status(200).jsonp(post);
+    } catch(err) {
+      next(err);
+    }
   }
 }

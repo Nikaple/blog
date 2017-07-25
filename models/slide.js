@@ -1,30 +1,19 @@
 const mongoose = require('mongoose');
 const SlideSchema = mongoose.Schema({
-  index: {
-    type: Number 
-  },
-  url: {
-    type: String
-  },
-  alt: {
-    type: String
-  }
+  index: Number,
+  url: String,
+  alt: String
 });
 
-const slide = mongoose.model('slide', SlideSchema);
+const Slide = mongoose.model('slide', SlideSchema);
 
-module.exports = slide;
-
-module.exports.getSlideByIndex = function(idx, callback) {
-  slide.find({index: idx}, callback);
-};
-
-module.exports.getAllSlides = function() {
-  slide.find({}, (err, doc) => {
-    if (err) {
-      console.log(err);
-    } else {
-      console.log(doc);
+module.exports = {
+  getAllSlides: async (req, res, next) => {
+    try {
+      const slides = await Slide.find({});
+      res.status(200).jsonp(slides);
+    } catch(err) {
+      next(err);
     }
-  });
+  }
 };

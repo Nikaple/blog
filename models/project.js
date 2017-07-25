@@ -3,10 +3,24 @@ const Schema = mongoose.Schema;
 
 const projectSchema = new Schema({
   name: String,
-  data: Number,
+  date: Number,
   thumbnail: String,
+  fullImage: String,
   description: String,
-  link: String
+  link: String,
+  category: String,
+  content: String
 });
 
-const projectModel = mongoose.model('project', projectSchema);
+const Project = mongoose.model('project', projectSchema);
+
+module.exports = {
+  getAllProjects: async (req, res, next) => {
+    try {
+      const projects = await Project.find({});
+      res.status(200).jsonp(projects);
+    } catch(err) {
+      next(err);
+    }
+  }
+};
