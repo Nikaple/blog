@@ -1,7 +1,7 @@
 ## Preview
 
-static: https://nikaple.github.io/blog/
-online: https://nikaple-blog.herokuapp.com/
+ - static: https://nikaple.github.io/blog/
+ - online: https://nikaple-blog.herokuapp.com/
 
 ## Installation
 
