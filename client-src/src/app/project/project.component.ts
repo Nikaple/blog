@@ -28,6 +28,8 @@ export class ProjectComponent implements OnInit {
   onClickMarkdown($event: Event) {
     $event.preventDefault();
     const target = $event.target as HTMLAnchorElement;
-    window.open(target.href);
+    if (target.tagName === 'A') {
+      window.open(target.href);
+    }
   }
 }
