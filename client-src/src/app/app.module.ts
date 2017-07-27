@@ -84,7 +84,7 @@ import { SlidesService } from './services/slides.service';
     BrowserModule,
     FlexLayoutModule,
     HttpModule,
-    InMemoryWebApiModule.forRoot(InMemoryDataService),
+    // InMemoryWebApiModule.forRoot(InMemoryDataService),
     BrowserAnimationsModule,
     // material
     MdTabsModule,
