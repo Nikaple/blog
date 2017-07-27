@@ -1,182 +1,170 @@
 /* tslint:disable:max-line-length */
 
-export const blog8 = `## 前端工作面试HTML相关问题
+export const blog8 = `
+## Markdown语法测试
 
-* Q: \`doctype\`（文档类型）的作用是什么？
+# H1
+## H2
+### H3
+#### H4
+##### H5
+###### H6
 
-  A: 在HTML中 \`doctype\` 有两个主要目的。
-  - 对文档进行有效性验证:
+Alternatively, for H1 and H2, an underline-ish style:
 
-    它告诉用户代理和校验器这个文档是按照什么DTD 写的。这个动作是被动的，每次页面加载时，浏览器并不会下载DTD 并检查合法性，只有当手动校验页面时才启用。
+Alt-H1
+======
 
-  - 决定浏览器的呈现模式:
+Alt-H2
+------
 
-    对于实际操作，通知浏览器读取文档时用哪种解析算法。如果没有写，则浏览器则根据自身的规则对代码进行解析，可能会严重影响HTML 排版布局。浏览器有三种方式解析HTML文档。
-     * 非怪异（标准）模式
-     * 怪异模式
-     * 部分怪异（近乎标准）模式
+# Emphasis
 
-  关于IE浏览器的文档模式，浏览器模式，严格模式，怪异模式，DOCTYPE标签，可详细阅读[模式？标准！](http://padding.me/blog/2014/07/04/mode-or-standard/)的内容。
+Emphasis, aka italics, with *asterisks* or _underscores_.
 
-* Q: 浏览器标准模式和怪异模式之间的区别是什么？
+Strong emphasis, aka bold, with **asterisks** or __underscores__.
 
-  A: 在“标准模式”(Standards Mode) 页面按照 HTML 与 CSS 的定义渲染，而在“怪异模式”(Quirks Mode)就是浏览器为了兼容很早之前针对旧版本浏览器设计、并未严格遵循 W3C 标准的网页而产生的一种页面渲染模式。浏览器基于页面中文件类型描述的存在以决定采用哪种渲染模式；如果存在一个完整的\`DOCTYPE\`则浏览器将会采用标准模式，而如果它缺失则浏览器将会采用怪异模式。
+Combined emphasis with **asterisks and _underscores_**.
 
-  强烈建议阅读加深理解：[怪异模式（Quirks Mode）对 HTML 页面的影响](http://www.ibm.com/developerworks/cn/web/1310_shatao_quirks/)，这里列下浏览器标准模式和怪异模式的区别：
+Strikethrough uses two tildes. ~~Scratch this.~~
 
-  1. 盒模型：
+# Lists
 
-    在怪异模式下，盒模型为IE盒模型而非标准模式下的W3C 盒模型：在 IE 盒模型中，
-    box width = content width + padding left + padding right + border left + border right，
-    box height = content height + padding top + padding bottom + border top + border bottom。
-    而在 W3C 标准的盒模型中，box 的大小就是 content 的大小。
+(In this example, leading and trailing spaces are shown with with dots: ⋅)
 
-  2. 图片元素的垂直对齐方式:
+1. First ordered list item
+2. Another item
+⋅⋅* Unordered sub-list.
+1. Actual numbers don't matter, just that it's a number
+⋅⋅1. Ordered sub-list
+4. And another item.
 
-    对于\`inline\`元素和\`table-cell\`元素，在 IE Standards Mode 下 vertical-align 属性默认取值为\`baseline\`。而当\`inline\`元素的内容只有图片时，如\`table\`的单元格\`table-cell\`。在 IE Quirks Mode 下，\`table\`单元格中的图片的 \`vertical-align\` 属性默认为\`bottom\`，因此，在图片底部会有几像素的空间。
+⋅⋅⋅You can have properly indented paragraphs within list items. Notice the blank line above, and the leading spaces (at least one, but we'll use three here to also align the raw Markdown).
 
-  3. \`<table>\`元素中的字体:
+⋅⋅⋅To have a line break without a paragraph, you will need to use two trailing spaces.⋅⋅
+⋅⋅⋅Note that this line is separate, but within the same paragraph.⋅⋅
+⋅⋅⋅(This is contrary to the typical GFM line break behaviour, where trailing spaces are not required.)
 
-    CSS 中，描述\`font\`的属性有\`font-family\`，\`font-size\`，\`font-style\`，\`font-weigh\`,上述属性都是可以继承的。而在 IE Quirks Mode 下，对于\`table\` 元素，字体的某些属性将不会从\`body\`或其他封闭元素继承到\`table\`中，特别是 \`font-size\`属性。
-
-  4. 内联元素的尺寸:
-
-    在 IE Standards Mode 下，non-replaced inline 元素无法自定义大小，而在 IE Quirks Mode 下，定义这些元素的\`width\`和\`height\` 属性，能够影响该元素显示的大小尺寸。
-
-  5. 元素的百分比高度:
-
-    CSS 中对于元素的百分比高度规定如下，百分比为元素包含块的高度，不可为负值。如果包含块的高度没有显式给出，该值等同于“auto”（即取决于内容的高度）。所以百分比的高度必须在父元素有声明高度时使用。
-
-    当一个元素使用百分比高度时，在 IE Standards Mode 下，高度取决于内容的变化，而在 Quirks Mode 下，百分比高度则被正确应用。
-
-  6. 元素溢出的处理：
-
-    在 IE Standard Mode 下，\`overflow\`取默认值 \`visible\`，即溢出可见，这种情况下，溢出内容不会被裁剪，呈现在元素框外。而在 Quirks Mode 下，该溢出被当做扩展\`box\`来对待，即元素的大小由其内容决定，溢出不会被裁剪，元素框自动调整，包含溢出内容。
-
-  另可参考阅读：<https://www.cs.tut.fi/~jkorpela/quirks-mode.html>
+* Unordered list can use asterisks
+- Or minuses
++ Or pluses
 
 
+# Links
 
-* Q: 使用 XHTML 的局限有哪些？
-    * 如果页面使用 'application/xhtml+xml' 会有什么问题吗？
+There are two ways to create links.
 
-    A: xhtml 语法要求严格，必须有\`head\`、\`body\` 每个dom 必须要闭合。空标签也必须闭合。例如\`<img />\`, \`<br/>\`, \`<input />\`等。另外要在属性值上使用双引号。一旦遇到错误，立刻停止解析，并显示错误信息。
-    如果页面使用'application/xhtml+xml',一些老的浏览器会不兼容。
+[I'm an inline-style link](https://www.google.com)
 
-* Q: 如果网页内容需要支持多语言，你会怎么做？
-    * 在设计和开发多语言网站时，有哪些问题你必须要考虑？
+[I'm an inline-style link with title](https://www.google.com "Google's Homepage")
 
-    A: 编码使用\`UTF-8\`，空间域名需要支持多浏览地址,准备多套模板。
-     在设计和开发多语言网站时，需要考虑
-     - 应用字符集的选择
-     - 语言书写习惯&导航结构
-     - 数据库驱动型网站
-     - css 盒子会因为内容尺寸不一样出现不对齐偏移
+[I'm a reference-style link][Arbitrary case-insensitive reference text]
 
-* Q: \`data-\`属性的作用是什么？
+[I'm a relative reference to a repository file](../blob/master/LICENSE)
 
-  A: \`data-\`为前端开发者提供自定义的属性，这些属性集可以通过对象的\`dataset\`属性获取，不支持该属性的浏览器可以通过\`getAttribute\`方法获取:
+[You can use numbers for reference-style link definitions][1]
 
-  \`<div data-author="david" data-time="2011-06-20" data-comment-num="10">...</div>\`
+Or leave it empty and use the [link text itself].
 
-  \`div.dataset.commentNum; // 10\`
+URLs and URLs in angle brackets will automatically get turned into links.
+http://www.example.com or <http://www.example.com> and sometimes
+example.com (but not on Github, for example).
 
-  需要注意的是，\`data-\`之后的以连字符分割的多个单词组成的属性，获取的时候使用驼峰风格。并不是所有的浏览器都支持.\`dataset\`属性，测试的浏览器中只有Chrome 和Opera 支持。
+Some text to show that the reference links can follow later.
 
-  即：当没有合适的属性和元素时，自定义的 data 属性是能够存储页面或 App 的私有的自定义数据。
-
-  > Custom data attributes are intended to store custom data private to the page or application, for which there are no more appropriate attributes or elements.
-
-* Q:如果把 HTML5 看作做一个开放平台，那它的构建模块有哪些？
-
-  A: 开放网络平台:
-
-  > The Open Web Platform is the collection of open (royalty-free) technologies which enables the Web. Using the Open Web Platform, everyone has the right to implement a software component of the Web without requiring any approvals or waiving license fees.
-
-  开放网络平台（Open Web Platform）是一些开放的（免版权）技术的集合，这些技术激活了互联网。使用开放网络平台时，每个人都有权实现 Web 上的一个组件，而不用向任何人索取许可和证书。
+[arbitrary case-insensitive reference text]: https://www.mozilla.org
+[1]: http://slashdot.org
+[link text itself]: http://www.reddit.com
 
 
-  将 HTML5 看做开放网络平台，那它的构建模块有哪些？我想，所谓构建模块，指的应该是开放网络平台这个技术集合中的技术。
 
-  - HTML
-  - DOM
-  - CSS
-  - SVG
-  - MathML
-  - Web APIs
-      + Canvas WebGL
-      + Audio
-      + Web Storage
-      + File, File System
-      + History, contentEditable, Drag & Drop, HTML Editing Commands
-      + Web Sockets
-      + Web Workers
-      + Server-Send Events
-      + XMLHttpRequest
-      + Geolocation, Device Orientation
-      + DOM Events, Touch Events, Progress Events
-      + Custom application development
-      + Clipboard and events
-      + Web Notifications, Web Messaging
-      + Offine Web Applications
-      + Media Capture API
-      + Timing control for script-based animations, Page Visibility, Navigation + Timing, Resource Timing
-      + Selectors
-      + DOM Traversal, DOM XPath, Element Traversal
-      + EcmaScript / JavaScript
-      + HTTP
-      + URI
-      + Media Accessibility Checklist
+# Images
 
-  该答案引自: <http://witcher42.github.io/2014/06/03/open-web-platform/>
+Here's our logo (hover to see the title text):
 
-* Q: 请描述一下 cookies，sessionStorage 和 localStorage 的区别？
+Inline-style:
+![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 1")
 
-  A: sessionStorage 和 localStorage 是HTML5 Web Storage API 提供的，可以方便的在web请求之间保存数据。有了本地数据，就可以避免数据在浏览器和服务器间不必要地来回传递。
+Reference-style:
+![alt text][logo]
 
-  sessionStorage、localStorage、cookie都是在浏览器端存储的数据，其中sessionStorage 的概念很特别，引入了一个“浏览器窗口”的概念。sessionStorage 是在同源的同窗口（或tab）中，始终存在的数据。也就是说只要这个浏览器窗口没有关闭，即使刷新页面或进入同源另一页面，数据仍然存在。关闭窗口后，sessionStorage 即被销毁。同时“独立”打开的不同窗口，即使是同一页面，sessionStorage 对象也是不同的
+[logo]: https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 2"
 
-  cookies会发送到服务器端。其余两个不会。
+# Code and Syntax Highlighting
 
-  Microsoft 指出 Internet Explorer 8 增加cookie 限制为每个域名50个，但IE7 似乎也允许每个域名50个cookie。Firefox 每个域名cookie 限制为50个。Opera每个域名cookie 限制为30个。Firefox 和Safari 允许cookie 多达4097个字节，包括名（name）、值（value）和等号。Opera 许cookie 多达4096个字节，包括：名（name）、值（value）和等号。Internet Explorer 允许cookie 多达4095个字节，包括：名（name）、值（value）和等号。
+Inline \`code\` has \`back-ticks around\` it.
 
-    - Cookie
-      + 每个域名存储量比较小（各浏览器不同，大致4K）
-      + 所有域名的存储量有限制（各浏览器不同，大致4K）
-      + 有个数限制（各浏览器不同）
-      + 会随请求发送到服务器
-    - LocalStorage
-      + 永久存储
-      + 单个域名存储量比较大（推荐5MB，各浏览器不同）
-      + 总体数量无限制
-    - SessionStorage
-      + 只在 Session 内有效
-      + 存储量更大（推荐没有限制，但是实际上各浏览器也不同）
+\`\`\`javascript
+var s = "JavaScript syntax highlighting";
+alert(s);
+\`\`\`
+
+\`\`\`python
+s = "Python syntax highlighting"
+print s
+\`\`\`
+
+\`\`\`html
+<body>
+  <p class="wow" id="click"></p>
+</body>
+\`\`\`
+
+\`\`\`css
+div {
+  border: 1px solid red;
+}
+\`\`\`
+\`\`\`
+No language indicated, so no syntax highlighting.
+But let's throw in a <b>tag</b>.
+
+\`\`\`
 
 
-* 请描述一下 \`GET\` 和 \`POST\` 的区别?
+# Blockquotes
 
-  A: 区别如下：
-  * get 向指定的资源请求数据,请求的数据会附在URL 之后,就是把数据放置在请求行（request line）中），以?分割URL和传输数据，多个参数用&连接；
-  * post 向指定的资源提交要被处理的数据。get 方法，查询请求是在url中显示的，有长度限制，get 方法是安全幂等的。而post 方法请求是封装在http 消息包体中
+> Blockquotes are very handy in email to emulate reply text.
+> This line is part of the same quote.
 
-   &|get|post
-  ---|---|----
-  后退/刷新|无害|请求重新提交
-  书签|可做书签|不可做
-  缓存|可被缓存|不能被缓存
-  历史|保留在浏览器记录里|不保留
-  对数据长度限制|限制（2048字符）|不限制
-  安全性|url中暴露数据|相对安全
-  可见性|url中可见|不可见
+Quote break.
 
-  总结：
-    - 对于get 来说，是向服务器端请求数据，其请求在url 中可见，其长度有限制（2048字符）个体方法是安全幂等，这里的安全是指用于获取信息而非修改信息，幂等是指每次请求得到的结果都一样。
-    - 对于post 来说，是向服务器端提交数据，每次刷新或者后退都会重新提交，post 请求的数据封装在http 请求的首部里。
+> This is a very long line that will still be quoted properly when it wraps. Oh boy let's keep writing to make sure this is long enough to actually wrap for everyone. Oh, you can *put* **Markdown** into a blockquote.
 
 
-tips: 以上部分答案参考自：
+# Horizontal Rule
 
-  - [paddingme](http://padding.me)
-  - [Witcher42](http://witcher42.github.io/)
-  - [郑州网建](http://camnpr.com/)`;
+Three or more...
+
+---
+
+Hyphens
+
+***
+
+Asterisks
+
+___
+
+Underscores
+
+# Tables
+
+Colons can be used to align columns.
+
+| Tables        | Are           | Cool  |
+| ------------- |:-------------:| -----:|
+| col 3 is      | right-aligned | $1600 |
+| col 2 is      | centered      |   $12 |
+| zebra stripes | are neat      |    $1 |
+
+There must be at least 3 dashes separating each header cell.
+The outer pipes (|) are optional, and you don't need to make the
+raw Markdown line up prettily. You can also use inline Markdown.
+
+Markdown | Less | Pretty
+--- | --- | ---
+*Still* | \`renders\` | **nicely**
+1 | 2 | 3
+
+`;

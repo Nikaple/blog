@@ -85,7 +85,8 @@ export class BlogPostsService {
     const titleMatch = blog.match(/#+.+\n/);
     // head should only contain # markups
     const title = titleMatch[0].replace(/#+/, '');
-    const bodyMarked = blog.substring(titleMatch.index, blog.length - 1);
+    const bodyMarked = blog.substring(titleMatch.index + titleMatch[0].length, blog.length - 1);
+//  console.log("bodyMarked ", bodyMarked);
     const bodyHTML = this.markdownService.compile(bodyMarked);
     const removeReg = /<[\s\S]+?>/g;
     const description = bodyHTML.replace(removeReg, '');
