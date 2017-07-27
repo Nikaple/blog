@@ -1,6 +1,6 @@
 {
   "name": "client-src",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
@@ -10,7 +10,8 @@
     "test": "ng test",
     "lint": "ng lint --fix --type-check",
     "e2e": "ng e2e",
-    "deploy": "ngh --dir \"../public\""
+    "deploy:ghpages": "ngh --dir \"../public\"",
+    "deploy:heroku": "ng build --prod && cd ../public && git add . && git commit -m deploy &&git push heroku master"
   },
   "private": true,
   "dependencies": {
