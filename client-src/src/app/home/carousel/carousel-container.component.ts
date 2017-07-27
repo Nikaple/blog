@@ -38,6 +38,7 @@ export class CarouselContainerComponent implements OnInit, OnDestroy {
     this.slidesService.getAllSlides()
       .then(slides => {
         this.slides = slides;
+        this.slides[0].isActive = true;
         this.cycle();
       })
       .catch(err => console.log(err));
