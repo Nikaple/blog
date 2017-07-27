@@ -20,7 +20,7 @@ export class SlidesService {
     } else {
       const post$ = this.http.get(HOST + this.endPoint)
         .map((res: any) => {
-          return res._body.data;
+          return res._body;
         })
         .toPromise();
       return retrieveSessionStorage(this.storageKey, post$);

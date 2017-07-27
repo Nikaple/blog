@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { ProjectInfo } from '../models/project-info.type';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
+import 'rxjs/add/operator/map';
 import { retrieveSessionStorage } from '../utils/retrieveSessionStorage';
 import { HOST, ENV } from '../utils/config';
 
@@ -21,7 +22,7 @@ export class ProjectsService {
     } else {
       const post$ = this.http.get(HOST + this.endPoint)
         .map((res: any) => {
-          return res._body.data;
+          return res._body;
         })
         .toPromise();
       return retrieveSessionStorage(this.storageKey, post$);

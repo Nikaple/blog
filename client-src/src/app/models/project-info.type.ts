@@ -1,7 +1,5 @@
 export interface ProjectInfo {
-  _id: {
-    $oid: string;
-  }
+  _id: string;
   name: string;
   tabName: string;
   date: number;

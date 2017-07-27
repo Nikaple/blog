@@ -31,6 +31,6 @@ export class HomeBlogsComponent implements OnInit {
   }
 
   onSelect(post: BlogPost) {
-    this.router.navigate(['/blog', post._id.$oid]);
+    this.router.navigate(['/blog', post._id]);
   }
 }

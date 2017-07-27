@@ -26,12 +26,14 @@ export class BlogPostsService {
       return retrieveSessionStorage('blog-posts', post$);
     } else {
       // Server API
-      const post$ = this.http.get(HOST + this.endPoint)
-        .map((res: any) => {
-          return res._body.data;
-        })
-        .toPromise();
-      return retrieveSessionStorage(this.storageKey, post$);
+      return retrieveSessionStorage(
+        this.storageKey,
+        this.http.get(HOST + this.endPoint)
+          .map((res: any) => {
+            return res._body;
+          })
+          .toPromise()
+        );
     }
   }
 
@@ -39,7 +41,7 @@ export class BlogPostsService {
     if (ENV === 'dev') {
       return this.getAllBlogPosts()
         .then(posts => {
-          return posts.filter(post => id === post._id.$oid)[0];
+          return posts.filter(post => id === post._id)[0];
         })
         .catch(err => console.log(err)) as Promise<BlogPost>;
     } else {
@@ -53,7 +55,7 @@ export class BlogPostsService {
   getAdjacentBlogPosts(id): Promise<AdjacentPosts> {
     return this.getAllBlogPosts()
     .then(posts => {
-      const index = posts.findIndex(post => id === post._id.$oid);
+      const index = posts.findIndex(post => id === post._id);
       return {
         prev: posts[index - 1],
         cur: posts[index],
@@ -66,7 +68,7 @@ export class BlogPostsService {
   getNextBlogPost(id): Promise<BlogPost|void> {
     return this.getAllBlogPosts()
     .then(posts => {
-      const index = posts.findIndex(post => id === post._id.$oid);
+      const index = posts.findIndex(post => id === post._id);
       return posts[index + 1];
     })
     .catch(err => console.log(err));
@@ -75,7 +77,7 @@ export class BlogPostsService {
   getPrevBlogPost(id): Promise<BlogPost|void> {
     return this.getAllBlogPosts()
     .then(posts => {
-      const index = posts.findIndex(post => id === post._id.$oid);
+      const index = posts.findIndex(post => id === post._id);
       return posts[index - 1] || null;
     })
     .catch(err => console.log(err));

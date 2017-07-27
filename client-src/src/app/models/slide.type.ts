@@ -3,9 +3,7 @@ import {
 } from './carousel.state';
 
 export interface Slide {
-  _id: {
-    $oid: string;
-  }
+  _id: string;
   index: number;
   url: string;
   alt: string;

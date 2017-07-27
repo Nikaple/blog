@@ -64,13 +64,13 @@ export class BlogPostComponent implements OnInit, OnDestroy {
   // navigate to next post
   onNextPost(): void {
     this.post = null;
-    this.router.navigate(['/blog', this.posts.next._id.$oid]);
+    this.router.navigate(['/blog', this.posts.next._id]);
   }
 
   // navigate to previous post
   onPrevPost(): void {
     this.post = null;
-    this.router.navigate(['/blog', this.posts.prev._id.$oid]);
+    this.router.navigate(['/blog', this.posts.prev._id]);
   }
 
   customizeLink() {
