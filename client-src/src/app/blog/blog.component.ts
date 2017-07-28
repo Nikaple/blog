@@ -24,7 +24,9 @@ export class BlogComponent implements OnInit {
         blogpost.description = description;
         return blogpost;
       })
-      this.blogPosts = posts;
+      this.blogPosts = posts.sort((prev, next) => {
+        return next.date - prev.date;
+      });
     });
   }
 

@@ -282,7 +282,7 @@ class StyleRenderer {
     this.rgb = utils.color.hsl2rgb(this.hsl.h, this.hsl.s, this.hsl.l);
     this.hex = utils.color.rgb2hex(this.rgb.r, this.rgb.g, this.rgb.b);
     // 当hex值可以简化时，将#66ccff简化为#6cf
-    const simplifyHex = /^#(?:([\da-f])\1){3}\$/.exec(this.hex);
+    const simplifyHex = /^#(?:([\\da-f])\1){3}\$/.exec(this.hex);
     if (simplifyHex !== null) {
       this.hex = \`#\${this.hex[1]}\${this.hex[3]}\${this.hex[5]}\`;
     }

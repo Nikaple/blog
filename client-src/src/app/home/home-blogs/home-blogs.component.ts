@@ -25,7 +25,11 @@ export class HomeBlogsComponent implements OnInit {
           blogPost.description = description;
           return blogPost;
         })
-        this.blogPosts = posts.slice(0, this.blogNum);
+        this.blogPosts = posts
+          .slice(0, this.blogNum)
+          .sort((prev, next) => {
+            return next.date - prev.date;
+          });
       })
       .catch(err => console.log(err));
   }
