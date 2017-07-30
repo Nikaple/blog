@@ -57,6 +57,7 @@ body {
   height: 265px;
   border-radius: 3px;
   border: 1px solid #666;
+  cursor: default;
 }
 
 .color-picker {
@@ -93,7 +94,7 @@ body {
   margin: 0;
   line-height: 2;
   text-align: center;
-  user-select: auto;
+  cursor: text;
 }
 
 .target {
