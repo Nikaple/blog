@@ -1,5 +1,7 @@
 ## Preview
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/Nikaple/blog.svg)](https://greenkeeper.io/)
+
 This is a MEAN stack based blog. The static version was hosted on [github pages](https://pages.github.com/), while the online version was deployed to [heroku](https://www.heroku.com/).
 
  - static: https://nikaple.github.io/blog/
